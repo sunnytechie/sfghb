@@ -71,6 +71,140 @@
           </li>
         </ul>
       </li>
+
+            <!-- Users -->      
+            <li class="menu-item 
+            {{-- @if (request()->routeIs('devotions.index') || request()->routeIs('devotions.create') || request()->routeIs('devotions.edit'))
+            active
+            @endif --}}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='bx bxs-user-detail'></i>
+                <div data-i18n="Layouts">Participants</div>
+              </a>
+      
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Container">Users</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Container">Admin</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-music' ></i>
+                <div data-i18n="Analytics">Audio</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bx-broadcast' ></i>
+                <div data-i18n="Analytics">Broadcasts</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-map-pin' ></i>
+                <div data-i18n="Analytics">Chapters</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-calendar-event' ></i>
+                <div data-i18n="Analytics">Events</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bx-plus-medical' ></i>
+                <div data-i18n="Analytics">Health</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-news' ></i>
+                <div data-i18n="Analytics">News</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bx-history' ></i>
+                <div data-i18n="Analytics">Activities</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-notification' ></i>
+                <div data-i18n="Analytics">Notifications</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-church' ></i>
+                <div data-i18n="Analytics">Prayers</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+                  active
+                @endif --}}
+                ">
+              <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class='bx bxs-credit-card-alt' ></i>
+                <div data-i18n="Analytics">Transactions</div>
+              </a>
+            </li>
      
 
       

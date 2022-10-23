@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Devotion;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class DevotionController extends Controller
 {
@@ -39,16 +40,20 @@ class DevotionController extends Controller
         //dd($request->all());
         request()->validate([
             'title' => 'required',
-            'thumbnail' => ['required', 'image'],
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
             'reading' => 'required',
             'read_date' => 'required',
             'published' => '',
         ]);
 
+        $imagePath = request('thumbnail')->store('uploads', 'public');
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image->save();
+
         $devotion = new Devotion;
         $devotion->title = $request->title;
-        $devotion->thumbnail = $request->thumbnail;
+        $devotion->thumbnail = $imagePath;
         $devotion->body = $request->body;
         $devotion->reading = $request->reading;
         $devotion->read_date = $request->read_date;
@@ -102,18 +107,26 @@ class DevotionController extends Controller
     {
         request()->validate([
             'title' => 'required',
-            'thumbnail' => 'image',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
             'reading' => 'required',
             'read_date' => 'required',
             'published' => 'required'
         ]);
 
+        //store thumbnail
+        //store image file in public/books/images
+        if ($request->has('thumbnail')) {
+            $imagePath = request('thumbnail')->store('uploads', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(500, 500);
+            $image->save();
+        }
+
         $devotion = Devotion::find($id);
         $devotion->title = $request->title;
-        //if has thumbnail
-        //$devotion->thumbnail = $request->thumbnail;
-        //endif
+        if ($request->has('thumbnail')) {
+            $devotion->thumbnail = $imagePath;
+            }
         $devotion->body = $request->body;
         $devotion->reading = $request->reading;
         $devotion->read_date = $request->read_date;

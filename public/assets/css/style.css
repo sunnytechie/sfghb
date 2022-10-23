@@ -1,0 +1,22 @@
+a.menu-link {
+    color: #ddd;
+    font-weight: 300 !important;
+    font-size: 13px !important;
+}
+
+a.menu-link:hover {
+    color: #fff;
+}
+
+a.menu-link i {
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+ul.menu-inner li.active {
+    background: #2B3035 !important;
+}
+
+li.menu-item .active {
+    background: #ddd !important;
+}

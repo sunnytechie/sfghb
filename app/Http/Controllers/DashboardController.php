@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Devotion;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,7 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $devotions = Devotion::orderBy('created_at', 'desc')->paginate();
+        return view('dashboard', compact('devotions'));
     }
 
     /**
@@ -80,5 +82,9 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function error() {
+        return view('error');
     }
 }

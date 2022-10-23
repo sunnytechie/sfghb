@@ -1,51 +1,88 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+          <div class="authentication-inner">
+            <!-- Register Card -->
+            <div class="card">
+              <div class="card-body">
+                <!-- Logo -->
+                <div class="app-brand justify-content-center mb-2">
+                    <a href="{{ route('login') }}" class="app-brand-link gap-2">
+                        <span class="app-brand-logo demo">
+                            <img width="50" height="50" src="{{ asset('assets/img/sfghb.png') }}" alt="SFGHB">
+                        </span> 
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <p class="mb-4 text-center">Reset your password</p>
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+                 <!-- Session Status -->
+              <x-auth-session-status class="mb-4" :status="session('status')" />
+  
+                <form id="formAuthentication" class="mb-3" action="{{ route('password.update') }}" method="POST">
+                    @csrf
 
-            <!-- Password Reset Token -->
+                    <!-- Password Reset Token -->
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
+                 <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <x-text-input 
+                    type="email" 
+                    class="form-control shadow-none rounded-0" 
+                    id="email" 
+                    type="email" 
+                    name="email" :value="old('email', $request->email)" 
+                    required 
+                    />
+                  </div>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                  <div class="mb-3 form-password-toggle">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        name="password"
+                        placeholder="New Password"
+                        aria-describedby="password"
+                        required
+                      />
+                      <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
+                  </div>
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                  <div class="mb-3 form-password-toggle">
+                    <label class="form-label" for="password">Confirm Password</label>
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        name="password_confirmation" 
+                        required
+                        placeholder="Repeat Password"
+                        aria-describedby="password"
+                      />
+                      <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
+                  </div>
+  
+                  
+                  <button type="submit" class="btn btn-primary d-grid w-100" style="background: #1781ec">Reset Password</button>
+                </form>
+  
+                <p class="text-center">
+                  <span>Already have an account?</span>
+                  <a href="{{ route('login') }}">
+                    <span>Sign in instead</span>
+                  </a>
+                </p>
+              </div>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Reset Password') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
+            <!-- Register Card -->
+          </div>
+        </div>
+      </div>
 </x-guest-layout>

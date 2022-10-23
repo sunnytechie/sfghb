@@ -1,64 +1,95 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
-
-                <x-text-input id="name" class="block mt-1 w-full border-2 border-blue-500" type="text" name="name" :value="old('name')" required />
-
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+          <div class="authentication-inner">
+            <!-- Register Card -->
+            <div class="card">
+              <div class="card-body">
+                <!-- Logo -->
+                <div class="app-brand justify-content-center mb-2">
+                  <a href="{{ route('login') }}" class="app-brand-link gap-2">
+                    <span class="app-brand-logo demo">
+                        <img width="50" height="50" src="{{ asset('assets/img/sfghb.png') }}" alt="SFGHB">
+                    </span> 
+                  </a>
+                </div>
+                <!-- /Logo -->
+                <p class="mb-4 text-center">Sign-up</p>
+  
+               
+                <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
+                    @csrf
+  
+                  <div>
+                    <label for="name" class="form-label">User Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      placeholder="Enter your name"
+                      required
+                    />
+                    <label><x-input-error :messages="$errors->get('name')" class="mt-1" /></label>
+                  </div>
+  
+                  <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" required/>
+                  <label><x-input-error :messages="$errors->get('email')" class="mt-1" /></label>
+                </div>
+  
+                  <div class="form-password-toggle">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        name="password"
+                        placeholder="New Password"
+                        aria-describedby="password"
+                        required
+                      />
+                      <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
+                    <label><x-input-error :messages="$errors->get('password')" class="mt-1" /></label>
+                  </div>
+  
+                  <div class="form-password-toggle">
+                    <label class="form-label" for="password">Confirm Password</label>
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        name="password_confirmation" 
+                        required
+                        placeholder="Repeat Password"
+                        aria-describedby="password"
+                      />
+                      <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
+                    <label><x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" /></label>
+                  </div>
+  
+                  <div>
+                    <div class="mb-3 form-check">
+                      <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" required />
+                      <label class="form-check-label" for="terms-conditions">
+                        I agree to
+                        <a href="javascript:void(0);">privacy policy & terms</a>
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary d-grid w-100" style="background: #ec1717">Sign up</button>
+                </form>
+  
+              
+              </div>
             </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full border-2 border-blue-500" type="email" name="email" :value="old('email')" required />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full border-2 border-blue-500"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full border-2 border-blue-500"
-                                type="password"
-                                name="password_confirmation" required />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+            <!-- Register Card -->
+          </div>
+        </div>
+      </div>
+  </x-guest-layout>

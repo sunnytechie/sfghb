@@ -14,7 +14,7 @@
 
     <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
+    <ul class="menu-inner py-1 pb-5">
       <span style="padding: 10px 30px; font-size: 11px; font-weight:200">MAIN</span>
       <!-- Dashboard -->
       <li class="menu-item 
@@ -117,7 +117,7 @@
         </ul>
       </li>
 
-      <!-- events -->      
+      <!-- news -->      
       <li class="menu-item 
       @if (request()->routeIs('news.index') || request()->routeIs('news.create') || request()->routeIs('news.edit'))
       active
@@ -220,11 +220,11 @@
             </li>
 
             <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+             @if(request()->routeIs('healths.index') || request()->routeIs('healths.create'))
                   active
-                @endif --}}
+                @endif
                 ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
+              <a href="{{ route('healths.index') }}" class="menu-link">
                 <i class='bx bx-plus-medical' ></i>
                 <div data-i18n="Analytics">Health</div>
               </a>
@@ -276,17 +276,59 @@
      
 
       
-      {{-- <li class="menu-item">
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-        <a href="{{ route('logout') }}" class="menu-link"
-        onclick="event.preventDefault();
-                                this.closest('form').submit();">
-          <i class="bx bx-power-off"></i>
-          <div data-i18n="Tables">Logout</div>
+      <!-- pages -->      
+      <li class="menu-item 
+      @if (request()->routeIs('page.faq') || request()->routeIs('page.others') || request()->routeIs('livestream.edit') || request()->routeIs('page.chapter') || request()->routeIs('page.social'))
+      active
+      @endif">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class='bx bxs-news' ></i>
+          <div data-i18n="Layouts">Pages</div>
         </a>
-        </form>
-      </li> --}}
+
+        <ul class="menu-sub">
+          {{-- <li class="menu-item 
+          @if(request()->routeIs('news.index'))
+            active
+          @endif">
+            <a href="{{ route('news.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Lists</div>
+            </a>
+          </li> --}}
+          
+
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Faq</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Other Pages</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a href="{{ route('livestream.edit') }}" class="menu-link">
+              <div data-i18n="Container">Livestream</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Chapter background info</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Social Media</div>
+            </a>
+          </li>
+
+        </ul>
+      </li>
     </ul>
   </aside>
   <!-- / Menu -->

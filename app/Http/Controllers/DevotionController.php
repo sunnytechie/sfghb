@@ -19,6 +19,14 @@ class DevotionController extends Controller
         return view('devotions.index', compact('devotions'));
     }
 
+    public function publishedDevotion() {
+
+    }
+
+    public function unpublishedDevotion() {
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *

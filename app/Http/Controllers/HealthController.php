@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Newspaper;
+use App\Models\Health;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-class NewsController extends Controller
+class HealthController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = Newspaper::orderBy('created_at', 'desc')->paginate();
-        return view('news.index', compact('news'));
-    }
-
-    public function publishedNews() {
-
-    }
-
-    public function unpublishedNews() {
-        
+        $healths = Health::orderBy('created_at', 'desc')->paginate();
+        return view('health.index', compact('healths'));
     }
 
     /**
@@ -34,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('news.new');
+        return view('health.new');
     }
 
     /**
@@ -45,28 +37,26 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-         //dd($request->all());
-         request()->validate([
+        //dd($request->all());
+        request()->validate([
             'title' => 'required',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
-            'published' => '',
         ]);
 
         $imagePath = request('thumbnail')->store('uploads', 'public');
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         $image->save();
 
-        $new = new Newspaper;
-        $new->title = $request->title;
-        $new->thumbnail = $imagePath;
-        $new->body = $request->body;
-        $new->published = $request->published;
-        $new->save();
+        $health = new Health;
+        $health->title = $request->title;
+        $health->thumbnail = $imagePath;
+        $health->body = $request->body;
+        $health->save();
 
-        $newID = $new->id;
+        $healthID = $health->id;
 
-        return redirect()->route('news.edit', $newID)->with('message', 'This news is published successfully.');
+        return redirect()->route('healths.edit', $healthID)->with('message', 'This health details is published successfully.');
     }
 
     /**
@@ -89,13 +79,12 @@ class NewsController extends Controller
     public function edit($id)
     {
         //dd($id);
-        $new = Newspaper::find($id);
-        $title = $new->title;
-        $thumbnail = $new->thumbnail;
-        $body = $new->body;
-        $published = $new->published;
+        $health = Health::find($id);
+        $title = $health->title;
+        $thumbnail = $health->thumbnail;
+        $body = $health->body;
 
-        return view('news.edit', compact('title', 'published', 'thumbnail', 'body', 'id'));
+        return view('health.edit', compact('title', 'thumbnail', 'body', 'id'));
     }
 
     /**
@@ -111,7 +100,6 @@ class NewsController extends Controller
             'title' => 'required',
             'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
-            'published' => 'required'
         ]);
 
         //store thumbnail
@@ -122,17 +110,16 @@ class NewsController extends Controller
             $image->save();
         }
 
-        $new = Newspaper::find($id);
-        $new->title = $request->title;
+        $health = Health::find($id);
+        $health->title = $request->title;
         if ($request->has('thumbnail')) {
-            $new->thumbnail = $imagePath;
+            $health->thumbnail = $imagePath;
             }
-        $new->body = $request->body;
-        $new->published = $request->published;
-        $new->save();
+        $health->body = $request->body;
+        $health->save();
         
-        $newID = $id;
-        return redirect()->route('news.edit', $newID)->with('message', 'This news is updated successfully.');
+        $healthID = $id;
+        return redirect()->route('healths.edit', $healthID)->with('message', 'This health information has been updated successfully.');
     }
 
     /**
@@ -143,9 +130,9 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $new = Newspaper::find($id);
-        $new->delete();
+        $health = Health::find($id);
+        $health->delete();
 
-        return redirect()->back()->with('message', 'One News has been deleted from this record.');
+        return redirect()->back()->with('message', 'One health information has been deleted from this record.');
     }
 }

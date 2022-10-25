@@ -19,6 +19,14 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
+    public function publishedEvent() {
+
+    }
+
+    public function unpublishedEvent() {
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -53,6 +61,7 @@ class EventController extends Controller
         $event->title = $request->title;
         $event->thumbnail = $imagePath;
         $event->body = $request->body;
+        $event->published = $request->published;
         $event->save();
 
         $eventID = $event->id;
@@ -137,6 +146,6 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->delete();
 
-        return redirect()->back()->with('message', 'One event has been deleted the your record.');
+        return redirect()->back()->with('message', 'One event has been deleted from this record.');
     }
 }

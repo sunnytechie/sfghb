@@ -27,6 +27,8 @@ Route::post('/forgot-password', [App\Http\Controllers\Api\Auth\NewPasswordContro
 Route::get('/devotions', [App\Http\Controllers\Api\DevotionController::class, 'index']);
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
+Route::get('/health', [App\Http\Controllers\Api\HealthController::class, 'index']);
+Route::get('/livestream', [App\Http\Controllers\Api\LivestreamController::class, 'liveStream']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

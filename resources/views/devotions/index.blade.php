@@ -4,7 +4,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <!-- Basic Bootstrap Table -->
         <div class="card">
-          <div class="d-flex justify-content-between py-2 px-4">
+          <div class="d-flex justify-content-between py-3 px-4">
             <div><h5>Devotions</h5></div>
             <div class="btn-group">
               <a href="{{ route('devotions.create') }}" class="btn btn-sm btn-success p-2">Add New</a>

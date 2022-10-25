@@ -109,7 +109,7 @@ class NewsController extends Controller
         //store image file in public/books/images
         if ($request->has('thumbnail')) {
             $imagePath = request('thumbnail')->store('uploads', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(500, 500);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
             $image->save();
         }
 

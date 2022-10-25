@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'thumbnail',
+        'body',
+        'published',
+    ];
+
+    public function eventcomments()
+    {
+        return $this->hasMany(Eventcomment::class);
+    }
 }

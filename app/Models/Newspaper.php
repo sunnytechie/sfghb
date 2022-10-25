@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Newspaper extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'thumbnail',
+        'body',
+        'published',
+    ];
+
+    public function newspapercomment()
+    {
+        return $this->hasMany(Newspapercomment::class);
+    }
 }

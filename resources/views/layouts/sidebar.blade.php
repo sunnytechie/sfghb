@@ -72,6 +72,96 @@
         </ul>
       </li>
 
+      <!-- events -->      
+      <li class="menu-item 
+      @if (request()->routeIs('events.index') || request()->routeIs('events.create') || request()->routeIs('events.edit'))
+      active
+      @endif">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class='bx bxs-calendar-event' ></i>
+          <div data-i18n="Layouts">Events</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item 
+          @if(request()->routeIs('events.index'))
+            active
+          @endif">
+            <a href="{{ route('events.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Lists</div>
+            </a>
+          </li>
+          <li class="menu-item
+          @if(request()->routeIs('events.create'))
+            active
+          @endif">
+            <a href="{{ route('events.create') }}" class="menu-link">
+              <div data-i18n="Without navbar">Add New</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Published</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">UnPublished</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Comments</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- events -->      
+      <li class="menu-item 
+      @if (request()->routeIs('news.index') || request()->routeIs('news.create') || request()->routeIs('news.edit'))
+      active
+      @endif">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class='bx bxs-news' ></i>
+          <div data-i18n="Layouts">News</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item 
+          @if(request()->routeIs('news.index'))
+            active
+          @endif">
+            <a href="{{ route('news.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Lists</div>
+            </a>
+          </li>
+          <li class="menu-item
+          @if(request()->routeIs('news.create'))
+            active
+          @endif">
+            <a href="{{ route('news.create') }}" class="menu-link">
+              <div data-i18n="Without navbar">Add New</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Published</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">UnPublished</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Comments</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
             <!-- Users -->      
             <li class="menu-item 
             {{-- @if (request()->routeIs('devotions.index') || request()->routeIs('devotions.create') || request()->routeIs('devotions.edit'))
@@ -135,30 +225,8 @@
                 @endif --}}
                 ">
               <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class='bx bxs-calendar-event' ></i>
-                <div data-i18n="Analytics">Events</div>
-              </a>
-            </li>
-
-            <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
-                  active
-                @endif --}}
-                ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class='bx bx-plus-medical' ></i>
                 <div data-i18n="Analytics">Health</div>
-              </a>
-            </li>
-
-            <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
-                  active
-                @endif --}}
-                ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class='bx bxs-news' ></i>
-                <div data-i18n="Analytics">News</div>
               </a>
             </li>
 

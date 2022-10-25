@@ -8,11 +8,11 @@
           <div class="col-md-8 offset-md-2">
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Edit donation</h5>
+                <h5 class="mb-0">Edit event</h5>
                 <small class="text-muted float-end">edit section</small>
               </div>
               <div class="card-body">
-                <form method="POST" action="{{ route('devotions.update', $id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('events.update', $id) }}" enctype="multipart/form-data">
                   @csrf
                     @method('put')
 
@@ -39,34 +39,8 @@
                       @enderror
                   </div>
     
-                  <div class="mb-3">
-                    <label class="form-label" for="basic-default-read_date">Read Date</label>
-                    <input type="date" class="form-control @error('read_date') is-invalid @enderror" id="basic-default-read_date" id="read_date" value="{{ old('read_date') ?? $read_date }}" name="read_date"/>
-                  
-                    @error('read_date')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                      @enderror
-                  </div>
     
-                  <div class="mb-3">
-                    <label class="form-label" for="basic-default-content">Reading</label>
-                    <textarea
-                      id="basic-default-content"
-                      class="form-control @error('reading') is-invalid @enderror"
-                      placeholder="Type content..."
-                      id="reading"
-                      name="reading"
-                    >{{ old('reading') ?? $reading }}</textarea>
-    
-                    @error('reading')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                      @enderror
-    
-                  </div>
+                
     
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-content">Content</label>

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Eventcomment extends Model
 {
     use HasFactory;
+
+    //belongs to user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    //belongs to event
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

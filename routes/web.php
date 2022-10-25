@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\DevotionController;
 
 /*
@@ -22,4 +24,7 @@ Route::get('/not-found', [App\Http\Controllers\DashboardController::class, 'erro
 
 //route resource
 Route::resource('devotions', DevotionController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('events', EventController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('news', NewsController::class)->middleware(['auth', 'verified', 'is_admin']);
+
 require __DIR__.'/auth.php';

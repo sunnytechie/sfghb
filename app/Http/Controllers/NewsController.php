@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Devotion;
+use App\Models\Newspaper;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-class DevotionController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DevotionController extends Controller
      */
     public function index()
     {
-        $devotions = Devotion::orderBy('created_at', 'desc')->paginate();
-        return view('devotions.index', compact('devotions'));
+        $news = Newspaper::orderBy('created_at', 'desc')->paginate();
+        return view('news.index', compact('news'));
     }
 
     /**
@@ -26,7 +26,7 @@ class DevotionController extends Controller
      */
     public function create()
     {
-        return view('devotions.new');
+        return view('news.new');
     }
 
     /**
@@ -37,13 +37,11 @@ class DevotionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        request()->validate([
+         //dd($request->all());
+         request()->validate([
             'title' => 'required',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
-            'reading' => 'required',
-            'read_date' => 'required',
             'published' => '',
         ]);
 
@@ -51,18 +49,15 @@ class DevotionController extends Controller
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         $image->save();
 
-        $devotion = new Devotion;
-        $devotion->title = $request->title;
-        $devotion->thumbnail = $imagePath;
-        $devotion->body = $request->body;
-        $devotion->reading = $request->reading;
-        $devotion->read_date = $request->read_date;
-        $devotion->published = $request->published;
-        $devotion->save();
+        $new = new Newspaper;
+        $new->title = $request->title;
+        $new->thumbnail = $imagePath;
+        $new->body = $request->body;
+        $new->save();
 
-        $devotionID = $devotion->id;
+        $newID = $new->id;
 
-        return redirect()->route('devotions.edit', $devotionID)->with('message', 'This devotion is published successfully.');
+        return redirect()->route('news.edit', $newID)->with('message', 'This news is published successfully.');
     }
 
     /**
@@ -85,15 +80,13 @@ class DevotionController extends Controller
     public function edit($id)
     {
         //dd($id);
-        $devotion = Devotion::find($id);
-        $title = $devotion->title;
-        $thumbnail = $devotion->thumbnail;
-        $body = $devotion->body;
-        $reading = $devotion->reading;
-        $read_date = $devotion->read_date;
-        $published = $devotion->published;
+        $new = Newspaper::find($id);
+        $title = $new->title;
+        $thumbnail = $new->thumbnail;
+        $body = $new->body;
+        $published = $new->published;
 
-        return view('devotions.edit', compact('title', 'published', 'thumbnail', 'body', 'reading', 'read_date', 'id'));
+        return view('news.edit', compact('title', 'published', 'thumbnail', 'body', 'id'));
     }
 
     /**
@@ -109,8 +102,6 @@ class DevotionController extends Controller
             'title' => 'required',
             'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
-            'reading' => 'required',
-            'read_date' => 'required',
             'published' => 'required'
         ]);
 
@@ -122,19 +113,17 @@ class DevotionController extends Controller
             $image->save();
         }
 
-        $devotion = Devotion::find($id);
-        $devotion->title = $request->title;
+        $new = Newspaper::find($id);
+        $new->title = $request->title;
         if ($request->has('thumbnail')) {
-            $devotion->thumbnail = $imagePath;
+            $new->thumbnail = $imagePath;
             }
-        $devotion->body = $request->body;
-        $devotion->reading = $request->reading;
-        $devotion->read_date = $request->read_date;
-        $devotion->published = $request->published;
-        $devotion->save();
+        $new->body = $request->body;
+        $new->published = $request->published;
+        $new->save();
         
-        $devotionID = $id;
-        return redirect()->route('devotions.edit', $devotionID)->with('message', 'This devotion has been updated successfully.');
+        $newID = $id;
+        return redirect()->route('news.edit', $newID)->with('message', 'This news is updated successfully.');
     }
 
     /**
@@ -145,9 +134,9 @@ class DevotionController extends Controller
      */
     public function destroy($id)
     {
-        $devotion = Devotion::find($id);
-        $devotion->delete();
+        $new = Newspaper::find($id);
+        $new->delete();
 
-        return redirect()->back()->with('message', 'One devotion has been deleted from this record.');
+        return redirect()->back()->with('message', 'One News has been deleted from this record.');
     }
 }

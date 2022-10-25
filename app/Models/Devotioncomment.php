@@ -15,7 +15,7 @@ class Devotioncomment extends Model
         return $this->belongsTo(User::class);
     }
 
-    //belongs to user
+    //belongs to devotion
     public function devotion()
     {
         return $this->belongsTo(Devotion::class);

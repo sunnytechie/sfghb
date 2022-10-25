@@ -1,1 +1,1 @@
-<img class="h-20" w-20 src="{{ asset('assets/img/sfghb.png') }}" alt="">
+<img width="50" height="50" src="{{ asset('assets/img/sfghb.png') }}" alt="">

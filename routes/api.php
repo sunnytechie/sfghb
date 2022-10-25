@@ -23,8 +23,10 @@ Route::post('/login-google', [App\Http\Controllers\Api\Auth\GoogleLoginControlle
 Route::post('/forgot-password', [App\Http\Controllers\Api\Auth\NewPasswordController::class, 'forgotPassword']);
 //api for user logout
 //Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
-//Api to Devotions
+//Api lists
 Route::get('/devotions', [App\Http\Controllers\Api\DevotionController::class, 'index']);
+Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
+Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

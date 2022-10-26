@@ -27,10 +27,13 @@
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
+                @php
+                    $id = 1;
+                @endphp
                 @foreach ($devotions as $devotion)
                    <tr>
                     <td><input type="checkbox" name="delete" id="delete"></td>
-                    <td>1</td>
+                    <td>{{ $id++ }}</td>
                     <td>
                         <img height="40" width="40" src="/storage/{{ $devotion->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>

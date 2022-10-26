@@ -5,11 +5,9 @@
         <!-- Basic Bootstrap Table -->
         <div class="card">
           <div class="d-flex justify-content-between py-3 px-4">
-            <div><h5>Events</h5></div>
+            <div><h5>Audio content</h5></div>
             <div class="btn-group">
-              <a href="{{ route('events.create') }}" class="btn btn-sm btn-success p-2">Add New</a>
-              <button type="submit" class="btn btn-sm btn-info">Unpublish selected</button>
-              <button type="submit" class="btn btn-sm btn-primary">Publish selected</button>
+              <a href="{{ route('audio.create') }}" class="btn btn-sm btn-success p-2">Add New</a>
             </div>
           </div>
           
@@ -21,8 +19,8 @@
                   <th>S/N</th>
                   <th>thumbnail</th>
                   <th>Title</th>
+                  <th>Series</th>
                   <th>Body</th>
-                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -30,29 +28,24 @@
                 @php
                     $id = 1;
                 @endphp
-                @foreach ($events as $event)
+                @foreach ($audio as $data)
                    <tr>
                     <td><input type="checkbox" name="delete" id="delete"></td>
                     <td>{{ $id++ }}</td>
                     <td>
-                        <img height="40" width="40" src="/storage/{{ $event->thumbnail }}" alt="Thumbnail" class="rounded" />
+                        <img height="40" width="40" src="/storage/{{ $data->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
-                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($event->title, 20) }}</td>
-                    <td>{{ Str::limit($event->body, 20) }}</td>
-                    <td><span class="badge bg-label-primary me-1">
-                        @if ($event->published == 1)
-                            PUBLISHED
-                        @else
-                            UNPUBLISHED
-                        @endif  
-                    </span></td>
+                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($data->title, 20) }}</td>
+                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ $data->audioserie->title }}</td>
+                    <td>{{ Str::limit($data->body, 20) }}</td>
+                    
                     <td>
                       <div class="btn-group">
-                          <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>
-                          <form method="post" action="{{ route('events.destroy', $event->id) }}">
+                          <a href="{{ route('audio.edit', $data->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>
+                          <form method="post" action="{{ route('audio.destroy', $data->id) }}">
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('Are you sure you want to delete this event?')" class="btn btn-danger btn-sm" style="border-bottom-left-radius: 0; border-top-left-radius: 0;"><i class='bx bx-trash'></i> Trash</button>
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this audio?')" class="btn btn-danger btn-sm" style="border-bottom-left-radius: 0; border-top-left-radius: 0;"><i class='bx bx-trash'></i> Trash</button>
                           </form>
                         </div>
                     </td>

@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AudioController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HealthController;
 use App\Http\Controllers\DevotionController;
+use App\Http\Controllers\AudioSerieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +35,7 @@ Route::resource('devotions', DevotionController::class)->middleware(['auth', 've
 Route::resource('events', EventController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('news', NewsController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('healths', HealthController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('audioseries', AudioSerieController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('audio', AudioController::class)->middleware(['auth', 'verified', 'is_admin']);
 
 require __DIR__.'/auth.php';

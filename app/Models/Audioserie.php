@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Audioserie extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
+    public function audio()
+    {
+        return $this->hasMany(Audio::class);
+    }
 }

@@ -186,15 +186,36 @@
               </ul>
             </li>
 
+
+            <!-- Audio -->      
             <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
-                  active
-                @endif --}}
-                ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class='bx bxs-music' ></i>
-                <div data-i18n="Analytics">Audio</div>
+            @if (request()->routeIs('audioseries.index') || request()->routeIs('audioseries.create') || request()->routeIs('audioseries.edit') || request()->routeIs('audio.index') || request()->routeIs('audio.edit') || request()->routeIs('audio.create'))
+            active
+            @endif">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='bx bxs-news' ></i>
+                <div data-i18n="Layouts">Audio</div>
               </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item 
+                @if(request()->routeIs('audioseries.index'))
+                  active
+                @endif">
+                  <a href="{{ route('audioseries.index') }}" class="menu-link">
+                    <div data-i18n="Without menu">Audio Series</div>
+                  </a>
+                </li>
+                <li class="menu-item
+                @if(request()->routeIs('audioseries.index'))
+                  active
+                @endif">
+                  <a href="{{ route('audio.index') }}" class="menu-link">
+                    <div data-i18n="Without navbar">Audio List</div>
+                  </a>
+                </li>
+
+              </ul>
             </li>
 
             <li class="menu-item 

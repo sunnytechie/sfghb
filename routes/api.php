@@ -29,6 +29,8 @@ Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/health', [App\Http\Controllers\Api\HealthController::class, 'index']);
 Route::get('/livestream', [App\Http\Controllers\Api\LivestreamController::class, 'liveStream']);
+Route::get('/audio', [App\Http\Controllers\Api\AudioController::class, 'index']);
+Route::get('/audioseries', [App\Http\Controllers\Api\AudioSeriesController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

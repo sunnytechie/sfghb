@@ -5,9 +5,9 @@
         <!-- Basic Bootstrap Table -->
         <div class="card">
           <div class="d-flex justify-content-between py-3 px-4">
-            <div><h5>Health blog</h5></div>
+            <div><h5>Audio Series</h5></div>
             <div class="btn-group">
-              <a href="{{ route('healths.create') }}" class="btn btn-sm btn-success p-2">Add New</a>
+              <a href="{{ route('audioseries.create') }}" class="btn btn-sm btn-success p-2">Add New</a>
             </div>
           </div>
           
@@ -17,8 +17,8 @@
                 <tr>
                   <th></th>
                   <th>S/N</th>
-                  <th>thumbnail</th>
                   <th>Title</th>
+                  <th>Audio</th>
                   <th>Body</th>
                   <th>Actions</th>
                 </tr>
@@ -27,22 +27,22 @@
                 @php
                     $id = 1;
                 @endphp
-                @foreach ($healths as $health)
+                @foreach ($series as $serie)
+                
                    <tr>
                     <td><input type="checkbox" name="delete" id="delete"></td>
                     <td>{{ $id++ }}</td>
-                    <td>
-                        <img height="40" width="40" src="/storage/{{ $health->thumbnail }}" alt="Thumbnail" class="rounded" />
-                    </td>
-                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($health->title, 20) }}</td>
-                    <td>{{ Str::limit($health->body, 20) }}</td>
+                    
+                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($serie->title, 20) }}</td>
+                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ $serie->audio->count() }}</td>
+                    <td>{{ Str::limit($serie->body, 20) }}</td>
                     <td>
                       <div class="btn-group">
-                          <a href="{{ route('healths.edit', $health->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>
-                          <form method="post" action="{{ route('healths.destroy', $health->id) }}">
+                          <a href="{{ route('audioseries.edit', $serie->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>
+                          <form method="post" action="{{ route('audioseries.destroy', $serie->id) }}">
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('Are you sure you want to delete this health?')" class="btn btn-danger btn-sm" style="border-bottom-left-radius: 0; border-top-left-radius: 0;"><i class='bx bx-trash'></i> Trash</button>
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this series?')" class="btn btn-danger btn-sm" style="border-bottom-left-radius: 0; border-top-left-radius: 0;"><i class='bx bx-trash'></i> Trash</button>
                           </form>
                         </div>
                     </td>

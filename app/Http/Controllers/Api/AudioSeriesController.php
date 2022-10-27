@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Audioserie;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AudioSeriesController extends Controller
 {

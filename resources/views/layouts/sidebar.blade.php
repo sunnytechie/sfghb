@@ -207,7 +207,7 @@
                   </a>
                 </li>
                 <li class="menu-item
-                @if(request()->routeIs('audioseries.index'))
+                @if(request()->routeIs('audio.index'))
                   active
                 @endif">
                   <a href="{{ route('audio.index') }}" class="menu-link">
@@ -252,15 +252,35 @@
             </li>
 
             <li class="menu-item 
-           @if(request()->routeIs('payment.index') || request()->routeIs('payment.create'))
-                  active
-                @endif
-                ">
-              <a href="{{ route('payment.index') }}" class="menu-link">
+            @if (request()->routeIs('payment.index') || request()->routeIs('donations.index'))
+            active
+            @endif">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='bx bxs-credit-card-alt' ></i>
-                <div data-i18n="Analytics">Transactions</div>
+                <div data-i18n="Layouts">Transactions</div>
               </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item 
+                @if(request()->routeIs('payment.index'))
+                  active
+                @endif">
+                  <a href="{{ route('payment.index') }}" class="menu-link">
+                    <div data-i18n="Without menu">Devotional Payments</div>
+                  </a>
+                </li>
+                <li class="menu-item
+                @if(request()->routeIs('donations.index'))
+                  active
+                @endif">
+                  <a href="{{ route('donations.index') }}" class="menu-link">
+                    <div data-i18n="Without navbar">Donations</div>
+                  </a>
+                </li>
+
+              </ul>
             </li>
+
 
             <li class="menu-item 
             {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))

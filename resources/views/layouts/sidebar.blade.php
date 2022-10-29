@@ -229,16 +229,16 @@
               </a>
             </li>
 
-            {{-- <li class="menu-item 
-             @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+            <li class="menu-item 
+             @if(request()->routeIs('feedback.index'))
                   active
                 @endif
                 ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class='bx bxs-map-pin' ></i>
-                <div data-i18n="Analytics">Chapters</div>
+              <a href="{{ route('feedback.index') }}" class="menu-link">
+                <i class='bx bxs-message-detail'></i>
+                <div data-i18n="Analytics">Feedback</div>
               </a>
-            </li> --}}
+            </li>
 
             <li class="menu-item 
              @if(request()->routeIs('healths.index') || request()->routeIs('healths.create'))

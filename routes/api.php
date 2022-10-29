@@ -35,6 +35,8 @@ Route::post('/payment', [App\Http\Controllers\Api\PaymentController::class, 'sto
 Route::get('/faq', [App\Http\Controllers\Api\FaqController::class, 'index']);
 Route::get('/social', [App\Http\Controllers\Api\SocialController::class, 'social']);
 Route::get('/info', [App\Http\Controllers\Api\InfoController::class, 'index']);
+Route::post('/feedback', [App\Http\Controllers\Api\MessageController::class, 'storeMessage']);
+//Route::post('/feedback', [App\Http\Controllers\Api\FeebackController::class, 'store']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -10,6 +10,7 @@ use App\Http\Controllers\HealthController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DevotionController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AudioSerieController;
 use App\Http\Controllers\LivestreamController;
@@ -53,5 +54,6 @@ Route::resource('audio', AudioController::class)->middleware(['auth', 'verified'
 Route::resource('payment', PaymentController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('faq', FaqController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('social', SocialController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('feedback', FeedbackController::class)->middleware(['auth', 'verified', 'is_admin']);
 
 require __DIR__.'/auth.php';

@@ -34,6 +34,7 @@ Route::get('/audioseries', [App\Http\Controllers\Api\AudioSeriesController::clas
 Route::post('/payment', [App\Http\Controllers\Api\PaymentController::class, 'store']);
 Route::get('/faq', [App\Http\Controllers\Api\FaqController::class, 'index']);
 Route::get('/social', [App\Http\Controllers\Api\SocialController::class, 'social']);
+Route::get('/info', [App\Http\Controllers\Api\InfoController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

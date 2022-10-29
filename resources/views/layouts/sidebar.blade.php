@@ -229,16 +229,16 @@
               </a>
             </li>
 
-            <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+            {{-- <li class="menu-item 
+             @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
-                @endif --}}
+                @endif
                 ">
               <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class='bx bxs-map-pin' ></i>
                 <div data-i18n="Analytics">Chapters</div>
               </a>
-            </li>
+            </li> --}}
 
             <li class="menu-item 
              @if(request()->routeIs('healths.index') || request()->routeIs('healths.create'))
@@ -248,6 +248,17 @@
               <a href="{{ route('healths.index') }}" class="menu-link">
                 <i class='bx bx-plus-medical' ></i>
                 <div data-i18n="Analytics">Health</div>
+              </a>
+            </li>
+
+            <li class="menu-item 
+           @if(request()->routeIs('payment.index') || request()->routeIs('payment.create'))
+                  active
+                @endif
+                ">
+              <a href="{{ route('payment.index') }}" class="menu-link">
+                <i class='bx bxs-credit-card-alt' ></i>
+                <div data-i18n="Analytics">Transactions</div>
               </a>
             </li>
 
@@ -284,22 +295,13 @@
               </a>
             </li>
 
-            <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
-                  active
-                @endif --}}
-                ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class='bx bxs-credit-card-alt' ></i>
-                <div data-i18n="Analytics">Transactions</div>
-              </a>
-            </li>
+            
      
 
       
       <!-- pages -->      
       <li class="menu-item 
-      @if (request()->routeIs('page.faq') || request()->routeIs('page.others') || request()->routeIs('livestream.edit') || request()->routeIs('page.chapter') || request()->routeIs('page.social'))
+      @if (request()->routeIs('faq.index') || request()->routeIs('info.index') || request()->routeIs('info.about') || request()->routeIs('info.contact') || request()->routeIs('info.policy') || request()->routeIs('info.recommend') || request()->routeIs('info.terms') || request()->routeIs('faq.create') || request()->routeIs('faq.edit') || request()->routeIs('page.others') || request()->routeIs('livestream.edit') || request()->routeIs('page.chapter') || request()->routeIs('social.index'))
       active
       @endif">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -308,25 +310,16 @@
         </a>
 
         <ul class="menu-sub">
-          {{-- <li class="menu-item 
-          @if(request()->routeIs('news.index'))
-            active
-          @endif">
-            <a href="{{ route('news.index') }}" class="menu-link">
-              <div data-i18n="Without menu">Lists</div>
-            </a>
-          </li> --}}
-          
 
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('faq.index') }}" class="menu-link">
               <div data-i18n="Container">Faq</div>
             </a>
           </li>
 
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              <div data-i18n="Container">Other Pages</div>
+            <a href="{{ route('info.index') }}" class="menu-link">
+              <div data-i18n="Container">Information Pages</div>
             </a>
           </li>
 
@@ -343,7 +336,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('social.index') }}" class="menu-link">
               <div data-i18n="Container">Social Media</div>
             </a>
           </li>

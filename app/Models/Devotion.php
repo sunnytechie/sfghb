@@ -16,6 +16,7 @@ class Devotion extends Model
         'reading',
         'read_date',
         'published',
+        'audio',
     ];
 
     public function devotioncomments()

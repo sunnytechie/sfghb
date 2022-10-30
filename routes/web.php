@@ -15,6 +15,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AudioSerieController;
 use App\Http\Controllers\LivestreamController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,19 +32,24 @@ use App\Http\Controllers\LivestreamController;
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.home')->middleware('auth', 'verified', 'is_admin');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth', 'verified', 'is_admin');
 
+//Push Notification
+Route::patch('/fcm-token', [DashboardController::class, 'updateToken'])->name('fcmToken')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/notification',[NotificationController::class,'create'])->name('notification.create')->middleware(['auth', 'verified', 'is_admin']);
+Route::post('/send-notification',[NotificationController::class,'notification'])->name('notification')->middleware(['auth', 'verified', 'is_admin']);
+
 //error page
 Route::get('/not-found', [DashboardController::class, 'error'])->name('error');
 
 //pages
-Route::get('/livestream', [LivestreamController::class, 'edit'])->name('livestream.edit');
-Route::put('/livestream/{id}', [LivestreamController::class, 'update'])->name('livestream.update');
-Route::get('/info', [InfoController::class, 'index'])->name('info.index');
-Route::put('/info/{id}', [InfoController::class, 'update'])->name('info.update');
-Route::get('/info/about-us', [InfoController::class, 'aboutUs'])->name('info.about');
-Route::get('/info/contact-us', [InfoController::class, 'contactUs'])->name('info.contact');
-Route::get('/info/recommend', [InfoController::class, 'recommended'])->name('info.recommend');
-Route::get('/info/privacy-policy', [InfoController::class, 'privacyPolicy'])->name('info.policy');
-Route::get('/info/terms-condition', [InfoController::class, 'termsCondition'])->name('info.terms');
+Route::get('/livestream', [LivestreamController::class, 'edit'])->name('livestream.edit')->middleware(['auth', 'verified', 'is_admin']);
+Route::put('/livestream/{id}', [LivestreamController::class, 'update'])->name('livestream.update')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/info', [InfoController::class, 'index'])->name('info.index')->middleware(['auth', 'verified', 'is_admin']);
+Route::put('/info/{id}', [InfoController::class, 'update'])->name('info.update')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/info/about-us', [InfoController::class, 'aboutUs'])->name('info.about')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/info/contact-us', [InfoController::class, 'contactUs'])->name('info.contact')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/info/recommend', [InfoController::class, 'recommended'])->name('info.recommend')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/info/privacy-policy', [InfoController::class, 'privacyPolicy'])->name('info.policy')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/info/terms-condition', [InfoController::class, 'termsCondition'])->name('info.terms')->middleware(['auth', 'verified', 'is_admin']);
 
 //route resource
 Route::resource('devotions', DevotionController::class)->middleware(['auth', 'verified', 'is_admin']);

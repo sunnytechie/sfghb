@@ -219,13 +219,12 @@
             </li>
 
             <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
-                  active
-                @endif --}}
-                ">
-              <a href="{{ route('dashboard') }}" class="menu-link">
+                @if(request()->routeIs('notification.create'))
+                      active
+                @endif">
+              <a href="{{ route('notification.create') }}" class="menu-link">
                 <i class='bx bx-broadcast' ></i>
-                <div data-i18n="Analytics">Broadcasts</div>
+                <div data-i18n="Analytics">Push Notification</div>
               </a>
             </li>
 
@@ -282,10 +281,10 @@
             </li>
 
 
-            <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+            {{-- <li class="menu-item 
+            @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
-                @endif --}}
+                @endif
                 ">
               <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class='bx bx-history' ></i>
@@ -294,26 +293,26 @@
             </li>
 
             <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+            @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
-                @endif --}}
+                @endif
                 ">
               <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class='bx bxs-notification' ></i>
                 <div data-i18n="Analytics">Notifications</div>
               </a>
-            </li>
+            </li> --}}
 
-            <li class="menu-item 
-            {{-- @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
+            {{-- <li class="menu-item 
+            @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
-                @endif --}}
+                @endif
                 ">
               <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class='bx bxs-church' ></i>
                 <div data-i18n="Analytics">Prayers</div>
               </a>
-            </li>
+            </li> --}}
 
             
      
@@ -349,11 +348,11 @@
             </a>
           </li>
 
-          <li class="menu-item">
+          {{-- <li class="menu-item">
             <a href="#" class="menu-link">
               <div data-i18n="Container">Chapter background info</div>
             </a>
-          </li>
+          </li> --}}
 
           <li class="menu-item">
             <a href="{{ route('social.index') }}" class="menu-link">

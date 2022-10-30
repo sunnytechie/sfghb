@@ -38,6 +38,21 @@
                         </span>
                       @enderror
                   </div>
+
+                  <div class="mb-3">
+                  <audio controls>
+                    <source src="/storage/{{ $audioFile }}" type="audio/ogg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <label class="form-label text-danger" for="basic-default-audio">Change audio</label>
+                <input type="file" class="form-control @error('audio') is-invalid @enderror" id="basic-default-audio" id="audio" value="{{ old('audio') }}" name="audio" />
+                
+                @error('audio')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+              </div>
     
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-read_date">Read Date</label>

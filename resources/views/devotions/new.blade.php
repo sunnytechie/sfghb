@@ -38,6 +38,17 @@
               </div>
 
               <div class="mb-3">
+                <label class="form-label" for="basic-default-audio">Audio</label>
+                <input type="file" class="form-control @error('audio') is-invalid @enderror" id="basic-default-audio" id="audio" value="{{ old('audio') }}" name="audio" />
+                
+                @error('audio')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+              </div>
+
+              <div class="mb-3">
                 <label class="form-label" for="basic-default-read_date">Read Date</label>
                 <input type="date" class="form-control @error('read_date') is-invalid @enderror" id="basic-default-read_date" id="read_date" value="{{ old('read_date') }}" name="read_date"/>
               

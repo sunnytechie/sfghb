@@ -19,7 +19,6 @@
                   <th>S/N</th>
                   <th>thumbnail</th>
                   <th>Title</th>
-                  <th>Body</th>
                   <th>Actions</th>
                 </tr>
               </thead>

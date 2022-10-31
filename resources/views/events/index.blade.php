@@ -38,7 +38,7 @@
                         <img height="40" width="40" src="/storage/{{ $event->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($event->title, 20) }}</td>
-                    <td>{{ Str::limit($event->body, 20) }}</td>
+                    <td>{!! Str::limit($event->body, 20) !!}</td>
                     <td><span class="badge bg-label-primary me-1">
                         @if ($event->published == 1)
                             PUBLISHED

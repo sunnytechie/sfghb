@@ -38,7 +38,7 @@
                         <img height="40" width="40" src="/storage/{{ $devotion->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($devotion->title, 20) }}</td>
-                    <td>{{ Str::limit($devotion->body, 20) }}</td>
+                    <td>{!! Str::limit($devotion->body, 20) !!}</td>
                     <td><span class="badge bg-label-primary me-1">
                         @if ($devotion->published == 1)
                             PUBLISHED

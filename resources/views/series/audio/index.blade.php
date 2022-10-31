@@ -37,7 +37,7 @@
                     </td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($data->title, 20) }}</td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ $data->audioserie->title }}</td>
-                    <td>{{ Str::limit($data->body, 20) }}</td>
+                    <td>{!! Str::limit($data->body, 20) !!}</td>
                     
                     <td>
                       <div class="btn-group">

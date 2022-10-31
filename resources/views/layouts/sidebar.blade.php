@@ -240,7 +240,7 @@
             </li>
 
             <li class="menu-item 
-             @if(request()->routeIs('healths.index') || request()->routeIs('healths.create'))
+             @if(request()->routeIs('healths.index') || request()->routeIs('healths.create') || request()->routeIs('healths.edit'))
                   active
                 @endif
                 ">

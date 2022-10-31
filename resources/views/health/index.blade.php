@@ -35,7 +35,7 @@
                         <img height="40" width="40" src="/storage/{{ $health->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($health->title, 20) }}</td>
-                    <td>{{ Str::limit($health->body, 20) }}</td>
+                    <td>{!! Str::limit($health->body, 20) !!}</td>
                     <td>
                       <div class="btn-group">
                           <a href="{{ route('healths.edit', $health->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>

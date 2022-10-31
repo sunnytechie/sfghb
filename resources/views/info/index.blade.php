@@ -60,7 +60,7 @@
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Terms and Condition</h5>
-                        <p class="card-text">{!! Str::limit($terms, 1600) !!}</p>
+                        <p class="card-text">{!! Str::limit($terms, 1500) !!}</p>
                         <div class="mt-4">
                             <a href="{{ route('info.terms') }}" class="btn btn-success btn-sm"><i class='bx bx-edit-alt' ></i></a>
                         </div>

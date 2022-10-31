@@ -35,7 +35,7 @@
                     
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($serie->title, 20) }}</td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ $serie->audio->count() }}</td>
-                    <td>{{ Str::limit($serie->body, 20) }}</td>
+                    <td>{!! Str::limit($serie->body, 20) !!}</td>
                     <td>
                       <div class="btn-group">
                           <a href="{{ route('audioseries.edit', $serie->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>

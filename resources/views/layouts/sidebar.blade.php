@@ -164,9 +164,9 @@
 
             <!-- Users -->      
             <li class="menu-item 
-            {{-- @if (request()->routeIs('devotions.index') || request()->routeIs('devotions.create') || request()->routeIs('devotions.edit'))
+            @if (request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') || request()->routeIs('admin.users'))
             active
-            @endif --}}">
+            @endif">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='bx bxs-user-detail'></i>
                 <div data-i18n="Layouts">Participants</div>
@@ -174,12 +174,12 @@
       
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="#" class="menu-link">
+                  <a href="{{ route('users.index') }}" class="menu-link">
                     <div data-i18n="Container">Users</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="#" class="menu-link">
+                  <a href="{{ route('admin.users') }}" class="menu-link">
                     <div data-i18n="Container">Admin</div>
                   </a>
                 </li>

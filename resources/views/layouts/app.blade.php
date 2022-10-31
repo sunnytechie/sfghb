@@ -61,6 +61,7 @@
         <script src="{{ asset('assets/js/config.js') }}"></script>
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
     <body class="font-sans antialiased">
          <!-- Layout wrapper -->
@@ -126,53 +127,61 @@
                         }, 1500);
                 </script>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+
+            <script>
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                    apiKey: "AIzaSyBofYN7-qW0zO11WeeMo0o4Gbe4qy-46v8",
+                    authDomain: "sfghb-65a08.firebaseapp.com",
+                    projectId: "sfghb-65a08",
+                    storageBucket: "sfghb-65a08.appspot.com",
+                    messagingSenderId: "670553009664",
+                    appId: "1:670553009664:web:f10bf041c1d80689e472e5",
+                    measurementId: "G-3QXEFF14ZN"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+                const messaging = firebase.messaging();
+
+                function initFirebaseMessagingRegistration() {
+                    messaging.requestPermission().then(function () {
+                        return messaging.getToken()
+                    }).then(function(token) {
+                        
+                        axios.post("{{ route('fcmToken') }}",{
+                            _method:"PATCH",
+                            token
+                        }).then(({data})=>{
+                            console.log(data)
+                        }).catch(({response:{data}})=>{
+                            console.error(data)
+                        })
+
+                    }).catch(function (err) {
+                        console.log(`Token Error :: ${err}`);
+                    });
+                }
+
+                initFirebaseMessagingRegistration();
+            
+                messaging.onMessage(function({data:{body,title}}){
+                    new Notification(title, {body});
+                });
+            </script>
 
 <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyBofYN7-qW0zO11WeeMo0o4Gbe4qy-46v8",
-        authDomain: "sfghb-65a08.firebaseapp.com",
-        projectId: "sfghb-65a08",
-        storageBucket: "sfghb-65a08.appspot.com",
-        messagingSenderId: "670553009664",
-        appId: "1:670553009664:web:f10bf041c1d80689e472e5",
-        measurementId: "G-3QXEFF14ZN"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    const messaging = firebase.messaging();
-
-    function initFirebaseMessagingRegistration() {
-        messaging.requestPermission().then(function () {
-            return messaging.getToken()
-        }).then(function(token) {
-            
-            axios.post("{{ route('fcmToken') }}",{
-                _method:"PATCH",
-                token
-            }).then(({data})=>{
-                console.log(data)
-            }).catch(({response:{data}})=>{
-                console.error(data)
-            })
-
-        }).catch(function (err) {
-            console.log(`Token Error :: ${err}`);
-        });
-    }
-
-    initFirebaseMessagingRegistration();
-  
-    messaging.onMessage(function({data:{body,title}}){
-        new Notification(title, {body});
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
-</script>
+  </script>
     </body>
 </html>

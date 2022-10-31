@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #3b5f69">
-                <a href="#">
+                <a href="{{ route('users.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F16C69">
-                <a href="#">
+                <a href="{{ route('admin.users') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F5B225">
-                <a href="#">
+                <a href="{{ route('devotions.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #52553c">
-                <a href="#">
+                <a href="{{ route('events.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -67,7 +67,7 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #3b5f69">
-                <a href="#">
+                <a href="{{ route('news.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -82,7 +82,7 @@
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F16C69">
-                <a href="#">
+                <a href="{{ route('payment.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -97,7 +97,7 @@
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F5B225">
-                <a href="#">
+                <a href="{{ route('donations.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -112,7 +112,7 @@
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #52553c">
-                <a href="#">
+                <a href="{{ route('audio.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -128,7 +128,7 @@
 
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #3b5f69">
-                <a href="#">
+                <a href="{{ route('feedback.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -144,7 +144,7 @@
         
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F16C69">
-                <a href="#">
+                <a href="{{ route('healths.index') }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div>

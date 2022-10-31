@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AudioController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HealthController;
@@ -63,5 +64,7 @@ Route::resource('faq', FaqController::class)->middleware(['auth', 'verified', 'i
 Route::resource('social', SocialController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('feedback', FeedbackController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('donations', DonationController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('users', UserController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/admin-users', [UserController::class, 'adminUser'])->name('admin.users')->middleware(['auth', 'verified', 'is_admin']);
 
 require __DIR__.'/auth.php';

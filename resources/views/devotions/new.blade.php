@@ -62,7 +62,6 @@
               <div class="mb-3">
                 <label class="form-label" for="basic-default-content">Reading</label>
                 <textarea
-                  id="basic-default-content"
                   class="form-control @error('reading') is-invalid @enderror"
                   placeholder="Type content..."
                   id="reading"
@@ -79,7 +78,6 @@
               <div class="mb-3">
                 <label class="form-label" for="basic-default-content">Content</label>
                 <textarea
-                  id="basic-default-content"
                   class="form-control @error('body') is-invalid @enderror"
                   placeholder="Type content..."
                   id="body"

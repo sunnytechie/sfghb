@@ -5,7 +5,7 @@ Sisters' Fellowship International
 Web, Mobile
 
 ## Tech Stack
-Laravel blade, PHP, Javascrip, Tailwind CSS
+Laravel blade, PHP, JavaScript, Bootstrap 5
 
 ### Developers
 Fortcan Tech Limited

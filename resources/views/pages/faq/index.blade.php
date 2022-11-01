@@ -31,7 +31,7 @@
                     <td><input type="checkbox" name="delete" id="delete"></td>
                     <td>{{ $id++ }}</td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($faq->title, 20) }}</td>
-                    <td>{{ Str::limit($faq->body, 20) }}</td>
+                    <td>{!! Str::limit($faq->body, 20) !!}</td>
                     <td>
                       <div class="btn-group">
                           <a href="{{ route('faq.edit', $faq->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>

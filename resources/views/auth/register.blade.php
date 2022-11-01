@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
           <div class="authentication-inner">
@@ -92,4 +92,4 @@
           </div>
         </div>
       </div>
-  </x-guest-layout>
+  </x-guest-layout> --}}

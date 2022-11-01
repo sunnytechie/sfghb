@@ -51,6 +51,12 @@
               </tbody>
             </table>
           </div>
+
+          <nav aria-label="Page navigation example" class="mx-3">
+            <ul class="pagination">
+              {!! $payments->links() !!}
+            </ul>
+          </nav>
         </div>
         <!--/ Basic Bootstrap Table -->
 

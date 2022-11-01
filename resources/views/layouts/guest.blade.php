@@ -50,7 +50,7 @@
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     </head>
-    <body style="background-image: url('assets/img/bg.jpg'">
+    <body style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>

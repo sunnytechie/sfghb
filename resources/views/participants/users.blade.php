@@ -46,6 +46,11 @@
               </tbody>
             </table>
           </div>
+          <nav aria-label="Page navigation example" class="mx-3">
+            <ul class="pagination">
+              {!! $users->links() !!}
+            </ul>
+          </nav>
         </div>
         <!--/ Basic Bootstrap Table -->
 

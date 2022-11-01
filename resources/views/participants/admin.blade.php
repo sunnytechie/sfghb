@@ -54,6 +54,11 @@
               </tbody>
             </table>
           </div>
+          <nav aria-label="Page navigation example" class="mx-3">
+            <ul class="pagination">
+              {!! $admins->links() !!}
+            </ul>
+          </nav>
         </div>
         <!--/ Basic Bootstrap Table -->
         <!--/ Responsive Table -->

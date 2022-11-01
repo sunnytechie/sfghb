@@ -20,7 +20,6 @@
                   <th>thumbnail</th>
                   <th>Title</th>
                   <th>Series</th>
-                  <th>Body</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -35,9 +34,9 @@
                     <td>
                         <img height="40" width="40" src="/storage/{{ $data->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
-                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($data->title, 20) }}</td>
+                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($data->title, 60) }}</td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ $data->audioserie->title }}</td>
-                    <td>{!! Str::limit($data->body, 20) !!}</td>
+                    
                     
                     <td>
                       <div class="btn-group">

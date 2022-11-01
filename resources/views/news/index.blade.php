@@ -21,7 +21,6 @@
                   <th>S/N</th>
                   <th>thumbnail</th>
                   <th>Title</th>
-                  <th>Body</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -37,8 +36,8 @@
                     <td>
                         <img height="40" width="40" src="/storage/{{ $new->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
-                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($new->title, 20) }}</td>
-                    <td>{!! Str::limit($new->body, 20) !!}</td>
+                    <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($new->title, 60) }}</td>
+                   
                     <td><span class="badge bg-label-primary me-1">
                         @if ($new->published == 1)
                             PUBLISHED

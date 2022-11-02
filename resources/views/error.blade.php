@@ -62,21 +62,29 @@
 
     <!-- Error -->
     <div class="container-xxl container-p-y">
-      <div class="misc-wrapper">
-        <h2 class="mb-2 mx-2">Page Not Found :(</h2>
-        <p class="mb-4 mx-2">Oops! 😖 The requested URL was not found on this server.</p>
-        <a href="{{ route('dashboard') }}" class="btn btn-primary">Back to home</a>
-        <div class="mt-3">
-          <img
-            src="assets/img/illustrations/page-misc-error-light.png"
-            alt="page-misc-error-light"
-            width="500"
-            class="img-fluid"
-            data-app-dark-img="illustrations/page-misc-error-dark.png"
-            data-app-light-img="illustrations/page-misc-error-light.png"
-          />
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="misc-wrapper p-4 shadow">
+          <div class="text-center">
+            <img class="img-fluid" width="300" src="{{ asset('assets/img/red-ghb.png') }}" alt="">
+          </div>
+          <p class="my-3 mx-2">Hi dear😃, Kindly continue from the mobile app.</p>
+          {{-- <a href="{{ route('dashboard') }}" class="btn btn-primary">Back to home</a> --}}
+          <div class="mt-3">
+            <img
+              src="{{ asset('assets/img/undraw_super_thank_you_re_f8bo.svg') }}"
+              alt="page-misc-error-light"
+              width="300"
+              class="img-fluid"
+              data-app-dark-img="illustrations/page-misc-error-dark.png"
+              data-app-light-img="illustrations/page-misc-error-light.png"
+            />
+          </div>
         </div>
+        </div>
+        
       </div>
+      
     </div>
     <!-- /Error -->
 

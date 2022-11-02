@@ -39,7 +39,7 @@ Route::get('/notification',[NotificationController::class,'create'])->name('noti
 Route::post('/send-notification',[NotificationController::class,'notification'])->name('notification')->middleware(['auth', 'verified', 'is_admin']);
 
 //error page
-Route::get('/not-found', [DashboardController::class, 'error'])->name('error');
+Route::get('/hi!', [DashboardController::class, 'error'])->name('error');
 
 //pages
 Route::get('/livestream', [LivestreamController::class, 'edit'])->name('livestream.edit')->middleware(['auth', 'verified', 'is_admin']);

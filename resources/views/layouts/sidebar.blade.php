@@ -362,6 +362,17 @@
 
         </ul>
       </li>
+
+      <li class="menu-item 
+            @if(request()->routeIs('paykeys.index'))
+              active
+            @endif
+            ">
+          <a href="{{ route('paykeys.index') }}" class="menu-link">
+            <i class='bx bx-cog'></i>
+            <div data-i18n="Analytics">Payment keys</div>
+          </a>
+        </li>
     </ul>
   </aside>
   <!-- / Menu -->

@@ -9,7 +9,20 @@ use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
+
+    public function index() {
+        $today = Carbon::now();
+        $expiredEmailSubscritions = Payment::select('email')
+        ->whereDate('validity', '<=', $today)
+        ->get();
+
+        return response()->json([
+            'expiredEmailSubscribers' => $expiredEmailSubscritions,
+        ]);
+    }
+
     public function store(Request $request) {
+        //Update validity if email already exits else store details
 
         $validity = Carbon::today()->addDays(90);
         //print_r($date);

@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AudioSerieController;
 use App\Http\Controllers\LivestreamController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaykeyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::resource('faq', FaqController::class)->middleware(['auth', 'verified', 'i
 Route::resource('social', SocialController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('feedback', FeedbackController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('donations', DonationController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('paykeys', PaykeyController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('users', UserController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/admin-users', [UserController::class, 'adminUser'])->name('admin.users')->middleware(['auth', 'verified', 'is_admin']);
 

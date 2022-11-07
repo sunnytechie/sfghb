@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('paykeys', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('currency')->nullable();
-            $table->string('amount');
-            $table->string('country')->nullable();
-            $table->date('validity')->nullable();
-            $table->string('method')->nullable();
-            $table->string('tx_ref');
+            $table->text('paystack_test_secret_key');
+            $table->text('paystack_test_public_key');
+            $table->text('paystack_live_secret_key');
+            $table->text('paystack_live_public_key');
+
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('paykeys');
     }
 };

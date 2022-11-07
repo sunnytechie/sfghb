@@ -25,6 +25,7 @@ Route::post('/forgot-password', [App\Http\Controllers\Api\Auth\NewPasswordContro
 //Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 //Api lists
 Route::get('/devotions', [App\Http\Controllers\Api\DevotionController::class, 'index']);
+Route::get('/devotion/today', [App\Http\Controllers\Api\DevotionController::class, 'show']);
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/health', [App\Http\Controllers\Api\HealthController::class, 'index']);
@@ -32,10 +33,12 @@ Route::get('/livestream', [App\Http\Controllers\Api\LivestreamController::class,
 Route::get('/audio', [App\Http\Controllers\Api\AudioController::class, 'index']);
 Route::get('/audioseries', [App\Http\Controllers\Api\AudioSeriesController::class, 'index']);
 Route::post('/payment', [App\Http\Controllers\Api\PaymentController::class, 'store']);
+Route::get('/payment/expired-subscribers', [App\Http\Controllers\Api\PaymentController::class, 'index']);
 Route::post('/donation', [App\Http\Controllers\Api\DonationController::class, 'store']);
 Route::get('/faq', [App\Http\Controllers\Api\FaqController::class, 'index']);
 Route::get('/social', [App\Http\Controllers\Api\SocialController::class, 'social']);
 Route::get('/info', [App\Http\Controllers\Api\InfoController::class, 'index']);
+Route::get('/paykeys', [App\Http\Controllers\Api\PaykeyController::class, 'index']);
 Route::post('/feedback', [App\Http\Controllers\Api\MessageController::class, 'storeMessage']);
 //Route::post('/feedback', [App\Http\Controllers\Api\FeebackController::class, 'store']);
 

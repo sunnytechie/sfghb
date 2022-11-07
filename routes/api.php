@@ -33,7 +33,7 @@ Route::get('/livestream', [App\Http\Controllers\Api\LivestreamController::class,
 Route::get('/audio', [App\Http\Controllers\Api\AudioController::class, 'index']);
 Route::get('/audioseries', [App\Http\Controllers\Api\AudioSeriesController::class, 'index']);
 Route::post('/payment', [App\Http\Controllers\Api\PaymentController::class, 'store']);
-Route::get('/payment/expired-subscribers', [App\Http\Controllers\Api\PaymentController::class, 'index']);
+Route::get('/payment/active-subscribers', [App\Http\Controllers\Api\PaymentController::class, 'index']);
 Route::post('/donation', [App\Http\Controllers\Api\DonationController::class, 'store']);
 Route::get('/faq', [App\Http\Controllers\Api\FaqController::class, 'index']);
 Route::get('/social', [App\Http\Controllers\Api\SocialController::class, 'social']);

@@ -12,12 +12,12 @@ class PaymentController extends Controller
 
     public function index() {
         $today = Carbon::now();
-        $expiredEmailSubscritions = Payment::select('email')
-        ->whereDate('validity', '<=', $today)
+        $activeEmailSubscritions = Payment::select('email')
+        ->whereDate('validity', '>', $today)
         ->get();
 
         return response()->json([
-            'expiredEmailSubscribers' => $expiredEmailSubscritions,
+            'activeEmailSubscribers' => $activeEmailSubscritions,
         ]);
     }
 

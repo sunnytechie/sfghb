@@ -21,6 +21,7 @@
                   <th>S/N</th>
                   <th>thumbnail</th>
                   <th>Title</th>
+                  <th>Read Date</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -37,14 +38,15 @@
                         <img height="40" width="40" src="/storage/{{ $devotion->thumbnail }}" alt="Thumbnail" class="rounded" />
                     </td>
                     <td><i class="fab fa-angular fa-lg text-danger"></i>{{ Str::limit($devotion->title, 60) }}</td>
-                    
+                    <td>{{ Carbon\Carbon::parse($devotion->read_date)->format('D, F, Y') }}</td>
                     <td><span class="badge bg-label-primary me-1">
                         @if ($devotion->published == 1)
                             PUBLISHED
                         @else
                             UNPUBLISHED
                         @endif  
-                    </span></td>
+                    </span>
+                  </td>
                     <td>
                       <div class="btn-group">
                           <a href="{{ route('devotions.edit', $devotion->id) }}" class="btn btn-warning btn-sm"><i class='bx bx-edit-alt' ></i> Edit</a>

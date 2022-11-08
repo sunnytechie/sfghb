@@ -8,8 +8,8 @@
           <div class="col-md-8 offset-md-2">
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">About Us</h5>
-                <small class="text-muted float-end">section</small>
+                <h5 class="mb-0">Payment Key Settings</h5>
+                <small class="text-muted float-end">Paystack</small>
               </div>
               <div class="card-body">
                 <form method="POST" action="{{ route('paykeys.update', $id) }}" enctype="multipart/form-data">
@@ -54,6 +54,17 @@
                     <input type="text" class="form-control @error('paystack_live_public_key') is-invalid @enderror" id="basic-default-paystack_live_public_key" value="{{ old('paystack_live_public_key') ?? $paystack_live_public_key }}" id="paystack_live_public_key" name="paystack_live_public_key" placeholder="Type..." />
                     
                     @error('paystack_live_public_key')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-default-devotion_price">Devotions Price</label>
+                    <input type="text" class="form-control @error('devotion_price') is-invalid @enderror" id="basic-default-devotion_price" value="{{ old('devotion_price') ?? $devotion_price }}" id="devotion_price" name="devotion_price" placeholder="Type..." />
+                    
+                    @error('devotion_price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

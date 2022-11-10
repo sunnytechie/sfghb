@@ -70,8 +70,8 @@
             data-bs-toggle="modal"
             data-bs-target="#editProfileModal"
             href="#">
-              <i class="bx bx-user me-2"></i>
-              <span class="align-middle">Profile</span>
+              <i class="bx bxs-key me-2"></i>
+              <span class="align-middle">Change Password</span>
             </a>
           </li>
           

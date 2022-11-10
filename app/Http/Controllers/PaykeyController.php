@@ -20,8 +20,9 @@ class PaykeyController extends Controller
         $paystack_live_secret_key = $paykey->paystack_live_secret_key;
         $paystack_live_public_key = $paykey->paystack_live_public_key;
         $devotion_price = $paykey->devotion_price;
+        $devotion_usd_price = $paykey->devotion_usd_price;
         $id = $paykey->id;
-        return view('paykeys.index', compact('paystack_test_secret_key', 'devotion_price', 'id', 'paystack_test_public_key', 'paystack_live_secret_key', 'paystack_live_public_key',));
+        return view('paykeys.index', compact('paystack_test_secret_key', 'devotion_usd_price', 'devotion_price', 'id', 'paystack_test_public_key', 'paystack_live_secret_key', 'paystack_live_public_key',));
     }
 
     /**
@@ -92,6 +93,9 @@ class PaykeyController extends Controller
                         if ($request->has('devotion_price')) {
                             $paykey->devotion_price = $request->devotion_price;
                             }
+                            if ($request->has('devotion_usd_price')) {
+                                $paykey->devotion_usd_price = $request->devotion_usd_price;
+                                }
         $paykey->save();
 
         return redirect()->back()->with('message', 'This keys has been updated successfully.');

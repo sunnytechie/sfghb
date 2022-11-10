@@ -17,32 +17,35 @@
               <thead>
                 <tr>
                   <th>S/N</th>
-                  <th>Name</th>
-                  <th>email</th>
+                  <th>Name <br>Phone </th>
+                  <th>No. <br> Copies</th>
+                  <th>Reason</th>
                   <th>Payment <br> Method</th>
                   <th>Transaction <br> Reference</th>
                   <th>Amount</th>
                   <th>Date <br> Paid</th>
-                  <th>Validity</th>
+                  <th>Downloadable</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
                 @php
                     $id = 1;
                 @endphp
-                @foreach ($payments as $payment)
+                @foreach ($purchases as $purchase)
                    <tr>
                     
                     <td>{{ $id++ }}</td>
-                    
-                    <td>{{ $payment->name }}</td>
-                    <td>{{ $payment->email }}</td>
-                    <td>{{ $payment->method }}</td>
-                    <td>{{ $payment->tx_ref }}</td>
-                    <td>{{ $payment->currency }} {{ $payment->amount }}</td>
-                    <td>{{ $payment->created_at->diffForHumans()  }}</td>
-                    <td>{{ Carbon\Carbon::parse($payment->validity)->format('d-m-Y') }}</td>
-
+                    <td><span>{{ $purchase->name }}</span><br><span>{{ $purchase->phone }}</span></td>
+                    <td>{{ $purchase->no_copy }}</td>
+                    <td>{{ $purchase->for_who }}</td>
+                    <td>{{ $purchase->method }}</td>
+                    <td>{{ $purchase->tx_ref }}</td>
+                    <td>{{ $purchase->currency }} {{ $purchase->amount }}</td>
+                    <td>{{ $purchase->created_at->diffForHumans()  }}</td>
+                    <td><a target="blank" href="/storage/{{ $purchase->thumbnail }}" download>
+                        <img height="40" width="40" src="/storage/{{ $purchase->thumbnail }}" alt="No File">
+                      </a>
+                    </td>
                   </tr> 
                 @endforeach
                   
@@ -52,7 +55,7 @@
 
           <nav aria-label="Page navigation example" class="mx-3">
             <ul class="pagination">
-              {!! $payments->links() !!}
+              {!! $purchases->links() !!}
             </ul>
           </nav>
         </div>

@@ -15,5 +15,6 @@ class Paykey extends Model
         'paystack_live_secret_key',
         'paystack_live_public_key',
         'devotion_price',
+        'devotion_usd_price',
     ];
 }

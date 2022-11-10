@@ -61,10 +61,21 @@
                   </div>
 
                   <div class="mb-3">
-                    <label class="form-label" for="basic-default-devotion_price">Devotions Price</label>
-                    <input type="text" class="form-control @error('devotion_price') is-invalid @enderror" id="basic-default-devotion_price" value="{{ old('devotion_price') ?? $devotion_price }}" id="devotion_price" name="devotion_price" placeholder="Type..." />
+                    <label class="form-label" for="basic-default-devotion_price">Naira Devotions Price</label>
+                    <input type="number" class="form-control @error('devotion_price') is-invalid @enderror" id="basic-default-devotion_price" value="{{ old('devotion_price') ?? $devotion_price }}" id="devotion_price" name="devotion_price" placeholder="Type..." />
                     
                     @error('devotion_price')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-default-devotion_usd_price">USD Devotions Price</label>
+                    <input type="number" class="form-control @error('devotion_usd_price') is-invalid @enderror" id="basic-default-devotion_usd_price" value="{{ old('devotion_usd_price') ?? $devotion_usd_price }}" id="devotion_usd_price" name="devotion_usd_price" placeholder="10USD" />
+                    
+                    @error('devotion_usd_price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

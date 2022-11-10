@@ -15,9 +15,11 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AudioSerieController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\LivestreamController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaykeyController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,7 @@ Route::get('/info/contact-us', [InfoController::class, 'contactUs'])->name('info
 Route::get('/info/recommend', [InfoController::class, 'recommended'])->name('info.recommend')->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/info/privacy-policy', [InfoController::class, 'privacyPolicy'])->name('info.policy')->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/info/terms-condition', [InfoController::class, 'termsCondition'])->name('info.terms')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/admin-users', [UserController::class, 'adminUser'])->name('admin.users')->middleware(['auth', 'verified', 'is_admin']);
 
 //route resource
 Route::resource('devotions', DevotionController::class)->middleware(['auth', 'verified', 'is_admin']);
@@ -67,6 +70,8 @@ Route::resource('feedback', FeedbackController::class)->middleware(['auth', 'ver
 Route::resource('donations', DonationController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('paykeys', PaykeyController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('users', UserController::class)->middleware(['auth', 'verified', 'is_admin']);
-Route::get('/admin-users', [UserController::class, 'adminUser'])->name('admin.users')->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('chapters', ChapterController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('purchases', PurchaseController::class)->middleware(['auth', 'verified', 'is_admin']);
+
 
 require __DIR__.'/auth.php';

@@ -251,7 +251,7 @@
             </li>
 
             <li class="menu-item 
-            @if (request()->routeIs('payment.index') || request()->routeIs('donations.index'))
+            @if (request()->routeIs('payment.index') || request()->routeIs('purchases.index') || request()->routeIs('donations.index'))
             active
             @endif">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -268,6 +268,14 @@
                     <div data-i18n="Without menu">Devotional Payments</div>
                   </a>
                 </li>
+                <li class="menu-item 
+                @if(request()->routeIs('purchases.index'))
+                  active
+                @endif">
+                  <a href="{{ route('purchases.index') }}" class="menu-link">
+                    <div data-i18n="Without menu">Hardcopy Purchase</div>
+                  </a>
+                </li>
                 <li class="menu-item
                 @if(request()->routeIs('donations.index'))
                   active
@@ -278,6 +286,17 @@
                 </li>
 
               </ul>
+            </li>
+
+            <li class="menu-item 
+            @if(request()->routeIs('chapters.index') || request()->routeIs('chapters.edit'))
+                  active
+                @endif
+                ">
+              <a href="{{ route('chapters.index') }}" class="menu-link">
+                <i class='bx bxs-location-plus'></i>
+                <div data-i18n="Analytics">Chapters</div>
+              </a>
             </li>
 
 

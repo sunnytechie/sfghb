@@ -39,6 +39,7 @@ Route::get('/faq', [App\Http\Controllers\Api\FaqController::class, 'index']);
 Route::get('/social', [App\Http\Controllers\Api\SocialController::class, 'social']);
 Route::get('/info', [App\Http\Controllers\Api\InfoController::class, 'index']);
 Route::get('/paykeys', [App\Http\Controllers\Api\PaykeyController::class, 'index']);
+Route::get('/chapters', [App\Http\Controllers\Api\ChapterController::class, 'index']);
 Route::post('/feedback', [App\Http\Controllers\Api\MessageController::class, 'storeMessage']);
 Route::post('/purchase', [App\Http\Controllers\Api\PurchaseController::class, 'store']);
 //Route::post('/feedback', [App\Http\Controllers\Api\FeebackController::class, 'store']);

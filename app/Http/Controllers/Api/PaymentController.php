@@ -10,19 +10,50 @@ use App\Http\Controllers\Controller;
 class PaymentController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request) {
         $today = Carbon::now();
         $activeEmailSubscritions = Payment::select('email')
         ->whereDate('validity', '>', $today)
         ->get();
 
-        return response()->json([
-            'activeEmailSubscribers' => $activeEmailSubscritions,
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'status' => "$message"
         ]);
+        } else {
+            if ($header == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjM0NTY3OTg3NjU0IiwibmFtZSI6IlNpc3RlcnMnIEZlbGxvd3NoaXAgSW50J2wiLCJpYXQiOjE1MTYyMzkwMjJ9.GziMCTMS3cwqX9RfATjEgX9ZpjBVxW8ASI2G8kGR5hY") {
+                //Allow access to data via the API end point
+                return response()->json([
+                    'activeEmailSubscribers' => $activeEmailSubscritions,
+                ]);
+            } else {
+                $message = "Invalid request or token";
+           return response()->json([
+            'status' => "$message"
+        ]);
+            }
+            
+        }
+
+        
     }
 
     public function store(Request $request) {
-        //Update validity if email already exits else store details
+
+
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'status' => "$message"
+        ]);
+        } else {
+            if ($header == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjM0NTY3OTg3NjU0IiwibmFtZSI6IlNpc3RlcnMnIEZlbGxvd3NoaXAgSW50J2wiLCJpYXQiOjE1MTYyMzkwMjJ9.GziMCTMS3cwqX9RfATjEgX9ZpjBVxW8ASI2G8kGR5hY") {
+                //Allow access to data via the API end point
+
+                //Update validity if email already exits else store details
         $validity = Carbon::today()->addDays(90);
         $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
        
@@ -62,5 +93,42 @@ class PaymentController extends Controller
         return response()->json([
             'status' => "You have successfully paid for searching for Gods heartbeat, thank you."
         ]);
+
+
+            } else {
+                $message = "Invalid request or token";
+           return response()->json([
+            'status' => "$message"
+        ]);
+            }
+            
+        }
+
+
+        
     }
+
+    //Storing data
+    public function bearer(Request $request) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'status' => "$message"
+        ]);
+        } else {
+            if ($header == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjM0NTY3OTg3NjU0IiwibmFtZSI6IlNpc3RlcnMnIEZlbGxvd3NoaXAgSW50J2wiLCJpYXQiOjE1MTYyMzkwMjJ9.GziMCTMS3cwqX9RfATjEgX9ZpjBVxW8ASI2G8kGR5hY") {
+                //Allow access to data via the API end point
+            } else {
+                $message = "Invalid request";
+           return response()->json([
+            'status' => "$message"
+        ]);
+            }
+            
+        }
+        
+    }
+
+
 }

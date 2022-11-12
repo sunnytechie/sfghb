@@ -26,7 +26,7 @@ class PurchaseController extends Controller
                     'phone' => 'required',
                     'no_copy' => '',
                     'for_who' => '',
-                    'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'thumbnail' => '',
                     'currency' => '',
                     'amount' => 'required',
                     'method' => 'required',

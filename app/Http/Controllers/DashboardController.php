@@ -11,6 +11,7 @@ use App\Models\Devotion;
 use App\Models\Donation;
 use App\Models\Feedback;
 use App\Models\Newspaper;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -32,7 +33,8 @@ class DashboardController extends Controller
         $audio = Audio::orderBy('created_at', 'desc')->get();
         $feedbacks = Feedback::orderBy('created_at', 'desc')->get();
         $health = Health::orderBy('created_at', 'desc')->get();
-        return view('dashboard', compact('devotions', 'users', 'admins', 'events', 'news', 'payments', 'donations', 'audio', 'feedbacks', 'health'));
+        $purchases = Purchase::orderBy('created_at', 'desc')->get();
+        return view('dashboard', compact('devotions', 'purchases', 'users', 'admins', 'events', 'news', 'payments', 'donations', 'audio', 'feedbacks', 'health'));
     }
 
     /**

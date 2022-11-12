@@ -157,6 +157,22 @@
                 </a>
             </div>
         </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card mini-stat position-relative" style="background: #F5B225">
+                <a href="{{ route('purchases.index') }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="text-uppercase verti-label text-white-50">Hard Copy Purchases</h6>
+                                <h3 class="mb-1 mt-0 text-white">{{ $purchases->count() }}</h3>
+                            </div>
+                            <div class="mini-stat-icon"><i class='bx bx-bible text-white-50' style="font-size: 60px"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </x-app-layout>

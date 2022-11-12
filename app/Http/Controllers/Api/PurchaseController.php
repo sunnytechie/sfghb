@@ -35,7 +35,7 @@ class PurchaseController extends Controller
         
                 if ($request->has('thumbnail')) {
                     $imagePath = request('thumbnail')->store('purchase', 'public');
-                    $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+                    $image = Image::make(public_path("storage/{$imagePath}"));
                     $image->save();
                 }
         

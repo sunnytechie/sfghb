@@ -32,22 +32,22 @@ class PurchaseController extends Controller
                     'method' => 'required',
                     'tx_ref' => 'required',
                 ]);
-        
-                if ($request->has('thumbnail')) {
-                    $imagePath = request('thumbnail')->store('purchase', 'public');
-                    $image = Image::make(public_path("storage/{$imagePath}"));
-                    $image->save();
+
+                if ($request->thumbnail == "noImage") {
+                    $imagePath = "Null";
+                } else {
+                        $imagePath = request('thumbnail')->store('purchase', 'public');
+                        $image = Image::make(public_path("storage/{$imagePath}"));
+                        $image->save();
                 }
-        
+                
                 $purchase = new Purchase;
                 $purchase->name = $request->name;
                 $purchase->email = $request->email;
                 $purchase->phone = $request->phone;
                 $purchase->no_copy = $request->no_copy;
                 $purchase->for_who = $request->for_who;
-                if ($request->has('thumbnail')) {
                 $purchase->thumbnail = $imagePath;
-                }
                 $purchase->currency = $request->currency;
                 $purchase->amount = $request->amount;
                 $purchase->method = $request->method;

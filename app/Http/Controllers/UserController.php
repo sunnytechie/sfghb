@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -127,5 +129,15 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect()->back()->with('message', 'User has been deleted from this record.');
+    }
+
+    public function userFileImport(Request $request) 
+    {
+        Excel::import(new UsersImport, $request->file('file')->store('temp'));
+        return back();
+    }
+
+    public function userFileImportForm() {
+        return view('imports.index');
     }
 }

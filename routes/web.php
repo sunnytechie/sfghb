@@ -73,5 +73,8 @@ Route::resource('users', UserController::class)->middleware(['auth', 'verified',
 Route::resource('chapters', ChapterController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('purchases', PurchaseController::class)->middleware(['auth', 'verified', 'is_admin']);
 
+//Import routes
+Route::get('user-import-form', [App\Http\Controllers\UserController::class, 'userFileImportForm'])->name('user.import.form')->middleware(['auth', 'verified', 'is_admin']);
+Route::post('user-import', [App\Http\Controllers\UserController::class, 'userFileImport'])->name('user.import')->middleware(['auth', 'verified', 'is_admin']);
 
 require __DIR__.'/auth.php';

@@ -219,10 +219,10 @@
             </li>
 
             <li class="menu-item 
-                @if(request()->routeIs('notification.create'))
+                @if(request()->routeIs('push.notication.index') || request()->routeIs('push.notication.create'))
                       active
                 @endif">
-              <a href="{{ route('notification.create') }}" class="menu-link">
+              <a href="{{ route('push.notication.index') }}" class="menu-link">
                 <i class='bx bx-broadcast' ></i>
                 <div data-i18n="Analytics">Push Notification</div>
               </a>

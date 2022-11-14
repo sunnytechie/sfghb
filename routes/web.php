@@ -20,6 +20,7 @@ use App\Http\Controllers\LivestreamController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaykeyController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PushNotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::patch('/fcm-token', [DashboardController::class, 'updateToken'])->name('fcmToken')->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/notification',[NotificationController::class,'create'])->name('notification.create')->middleware(['auth', 'verified', 'is_admin']);
 Route::post('/send-notification',[NotificationController::class,'notification'])->name('notification')->middleware(['auth', 'verified', 'is_admin']);
+//Push Nofication 2
+Route::get('/push-notifications',[PushNotificationController::class,'index'])->name('push.notication.index')->middleware(['auth', 'verified', 'is_admin']);
+Route::get('/push-notification',[PushNotificationController::class,'create'])->name('push.notication.create')->middleware(['auth', 'verified', 'is_admin']);
+Route::post('/send-push-notification',[PushNotificationController::class,'store'])->name('push.notification.send')->middleware(['auth', 'verified', 'is_admin']);
 
 //error page
 Route::get('/hi!', [DashboardController::class, 'error'])->name('error');

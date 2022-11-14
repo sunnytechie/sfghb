@@ -36,6 +36,11 @@ class PushNotificationController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'title' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'body' => 'required',
+        ]);
         $notification = new PushNotification();
         $notification->title = $request->input('title');
         $notification->body = $request->input('body');

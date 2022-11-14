@@ -53,7 +53,6 @@ class PushNotificationController extends Controller
             'Authorization: key=' . "AAAAnCAS7gA:APA91bGoELdTsNBn3djtQlUNwHUQtfMwYNCgJSHj3kr_tih9cAnJYBney9iqoJ6AOt1GAnhlOeqBEZRJAzvFvrJOhoSdnjamZrw6IsaMoowjkQsAjGrlRP8zYju80BdF73aszTqjfRI0",
             'Content-Type: application/json'
         );
-
         $ch = curl_init ();
         curl_setopt ( $ch, CURLOPT_URL, $url );
         curl_setopt ( $ch, CURLOPT_POST, true );

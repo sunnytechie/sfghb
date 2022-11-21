@@ -49,8 +49,11 @@
         <script src="{{ asset('assets/js/config.js') }}"></script>
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        <style>
+            
+        </style>
     </head>
-    <body style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <body style="background-image: url('{{ asset('assets/img/bg.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>

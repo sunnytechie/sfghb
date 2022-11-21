@@ -40,7 +40,7 @@ class LoginController extends Controller
             }
             
             else {
-                return response()->json(['error' => 'Invalid email or password'], 401);
+                return response()->json(['error' => 'Invalid email or password. Kindly click on forgot password to change your password.'], 401);
             } 
                
     }

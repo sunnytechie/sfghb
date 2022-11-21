@@ -25,19 +25,23 @@
                 <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
                     @csrf
   
-                  <div>
+                  <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input
                       type="email"
-                      class="form-control"
+                      class="form-control @error('email') is-invalid @enderror"
                       id="email"
                       name="email"
-                      :value="old('email')"
+                      value="{{ old('email') }}"
                       placeholder="Enter your email or username"
                       autofocus
-                      required
+                      
                     />
-                    <label for="error"><x-input-error :messages="$errors->get('email')" class="mt-1" /></label>
+                    <span>
+                      @error('email')
+                            <strong class="text-danger">{{ $message }}</strong>
+                      @enderror
+                    </span>
                   </div>
   
   
@@ -53,14 +57,19 @@
                       <input
                         type="password"
                         id="password"
-                        class="form-control"
+                        class="form-control @error('password') is-invalid @enderror"
                         name="password"
                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                         aria-describedby="password"
                       />
                       <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     </div>
-                    <label for="error"><x-input-error :messages="$errors->get('password')" class="mt-2" /></label>
+                    
+                    <span>
+                      @error('password')
+                            <strong class="text-danger">{{ $message }}</strong>
+                      @enderror
+                    </span>
                   </div>
   
   

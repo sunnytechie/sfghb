@@ -43,15 +43,21 @@
                       <input
                         type="password"
                         id="password"
-                        class="form-control"
+                        class="form-control @error('password') is-invalid @enderror"
+                        value="{{ old('password') }}"
                         name="password"
                         placeholder="New Password"
                         aria-describedby="password"
-                        required
                       />
                       <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     </div>
+                    <span>
+                      @error('password')
+                            <strong class="text-danger">{{ $message }}</strong>
+                      @enderror
+                    </span>
                   </div>
+
 
                   <div class="mb-3 form-password-toggle">
                     <label class="form-label" for="password">Confirm Password</label>
@@ -59,14 +65,18 @@
                       <input
                         type="password"
                         id="password"
-                        class="form-control"
+                        class="form-control @error('password_confirmation') is-invalid @enderror"
                         name="password_confirmation" 
-                        required
                         placeholder="Repeat Password"
                         aria-describedby="password"
                       />
                       <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     </div>
+                    <span>
+                      @error('password_confirmation')
+                            <strong class="text-danger">{{ $message }}</strong>
+                      @enderror
+                    </span>
                   </div>
   
                   

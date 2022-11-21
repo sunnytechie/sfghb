@@ -12,6 +12,10 @@ class Livestream extends Model
     protected $fillable = [
         'title',
         'url',
+        'body',
+        'tags',
+        'location',
+        'visibility',
+        'minister',
     ];
-
 }

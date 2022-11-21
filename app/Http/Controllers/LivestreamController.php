@@ -62,7 +62,12 @@ class LivestreamController extends Controller
         $id = $live->id;
         $title = $live->title;
         $url = $live->url;
-        return view('pages.livestream', compact('live', 'id', 'url', 'title'));
+        $body = $live->body;
+        $tags = $live->tags;
+        $location = $live->location;
+        $visibility = $live->visibility;
+        $minister = $live->minister;
+        return view('pages.livestream', compact('live', 'id', 'url', 'title', 'body', 'tags', 'location', 'visibility', 'minister'));
     }
 
     /**
@@ -78,11 +83,21 @@ class LivestreamController extends Controller
         request()->validate([
             'title' => 'required',
             'url' => 'required|url',
+            'body' => 'required',
+            'tags' => 'required',
+            'location' => 'required',
+            'visibility' => '',
+            'minister' => 'required',
         ]);
 
         $live = Livestream::find($id);
         $live->title = $request->title;
         $live->url = $request->url;
+        $live->body = $request->body;
+        $live->tags = $request->tags;
+        $live->location = $request->location;
+        $live->visibility = $request->visibility;
+        $live->minister = $request->minister;
         $live->save();
 
         return redirect()->back()->with('message', 'Live stream video link has been updated successfully and notification sent.');

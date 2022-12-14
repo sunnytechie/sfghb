@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -44,6 +46,19 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        //free trial for 7 days on payment
+        $validity = Carbon::today()->addDays(7);
+        $payment = new Payment;
+        $payment->name = $user->name;
+        $payment->email = $user->email;
+        $payment->currency = "NGN";
+        $payment->amount = 0;
+        $payment->country = "NG";
+        $payment->validity = $validity;
+        $payment->method = "Free Trial";
+        $payment->tx_ref = "Free Trial";
+        $payment->save();
 
         event(new Registered($user));
 

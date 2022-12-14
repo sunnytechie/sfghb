@@ -104,7 +104,7 @@ class DashboardController extends Controller
     }
 
     public function error() {
-        return view('error');
+        return view('auth.verified');
     }
 
 

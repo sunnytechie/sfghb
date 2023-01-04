@@ -73,7 +73,6 @@
                             <img src="{{ asset('assets/img/red-ghb1.png') }}" alt="">
                         </div>
                         
-                        <h3 class="text-center">Privacy Policy</h3>
                         <p class="card-text">{!! $privacy_policy !!}</p>
                         
                     </div>

@@ -74,7 +74,7 @@
                         </div>
                         
                         <h3 class="text-center">Privacy Policy</h3>
-                        <p class="card-text">{{ $privacy_policy }}</p>
+                        <p class="card-text">{!! $privacy_policy !!}</p>
                         
                     </div>
                 </div>

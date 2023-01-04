@@ -65,6 +65,14 @@ class InfoController extends Controller
         return view('info.policy', compact('privacy_policy', 'id'));
     }
 
+    public function privacyPolicyPage()
+    {
+        $info = Info::orderBy('created_at', 'desc')->first();
+        $id = $info->id;
+        $privacy_policy = $info->privacy_policy;
+        return view('policy', compact('privacy_policy', 'id'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

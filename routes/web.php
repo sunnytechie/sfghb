@@ -61,6 +61,9 @@ Route::get('/info/privacy-policy', [InfoController::class, 'privacyPolicy'])->na
 Route::get('/info/terms-condition', [InfoController::class, 'termsCondition'])->name('info.terms')->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/admin-users', [UserController::class, 'adminUser'])->name('admin.users')->middleware(['auth', 'verified', 'is_admin']);
 
+//urls for privacy policy and terms and conditions
+Route::get('/privacy-policy', [InfoController::class, 'privacyPolicyPage'])->name('privacy.policy');
+
 //route resource
 Route::resource('devotions', DevotionController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('events', EventController::class)->middleware(['auth', 'verified', 'is_admin']);

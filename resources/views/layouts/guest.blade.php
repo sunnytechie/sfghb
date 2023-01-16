@@ -53,7 +53,7 @@
             
         </style>
     </head>
-    <body style="background-image: url('{{ asset('assets/img/bg.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <body style="background-image: url('{{ asset('assets/img/sfg-bg.png') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>

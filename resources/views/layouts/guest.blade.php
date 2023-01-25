@@ -50,7 +50,9 @@
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <style>
-            
+            .authentication-wrapper.authentication-basic .authentication-inner:before {
+                display: none;
+            }
         </style>
     </head>
     <body style="background-image: url('{{ asset('assets/img/sfg-bg.png') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">

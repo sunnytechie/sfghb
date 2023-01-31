@@ -5,47 +5,65 @@
 
     <!-- New devotion -->
     <div class="row">
-      <div class="col-md-8 offset-md-2">
+      <div class="col-md-10 offset-md-1">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Compose</h5>
-            <small class="text-muted float-end">create new</small>
+            <small class="text-muted float-end"><a class="btn btn-sm btn-primary rounded-0" href="{{ route('devotions.create') }}">Create New</a></small>
           </div>
           <div class="card-body">
             <form method="POST" action="{{ route('devotions.store') }}" enctype="multipart/form-data">
               @csrf
 
-              <div class="mb-3">
-                <label class="form-label" for="basic-default-title">Title</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') }}" id="title" name="title" placeholder="Type..." />
-                
-                @error('title')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
+              <div class="row mb-3">
+                <div class="col-md-6 from-group">
+                  <label class="form-label" for="basic-default-title">Title</label>
+                  <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') }}" id="title" name="title" placeholder="Type..." />
+                  
+                  @error('title')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-6 from-group">
+                  <label class="form-label" for="basic-default-title">publish status</label>
+                  <select class="form-control @error('published') is-invalid @enderror" name="published" id="published">
+                      <option selected value="1">Publish</option>
+                      <option value="0">Unpublish</option>
+                  </select>
+  
+                  @error('published')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
+              </div>
               </div>
 
-              <div class="mb-3">
-                <label class="form-label" for="basic-default-thumbnail">Thumbnail</label>
-                <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="basic-default-thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" name="thumbnail" />
-                
-                @error('thumbnail')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
-              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="basic-default-thumbnail">Thumbnail</label>
+                  <input type="file" class="dropify form-control @error('thumbnail') is-invalid @enderror" id="basic-default-thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" name="thumbnail" />
+                  
+                  @error('thumbnail')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                </div>
 
-              <div class="mb-3">
-                <label class="form-label" for="basic-default-audio">Audio</label>
-                <input type="file" class="form-control @error('audio') is-invalid @enderror" id="basic-default-audio" id="audio" value="{{ old('audio') }}" name="audio" />
-                
-                @error('audio')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
+                <div class="col-md-6">
+                  <label class="form-label" for="basic-default-audio">Audio</label>
+                  <input type="file" class="dropify form-control @error('audio') is-invalid @enderror" id="basic-default-audio" id="audio" value="{{ old('audio') }}" name="audio" />
+                  
+                  @error('audio')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                </div>
               </div>
 
               <div class="mb-3">
@@ -63,8 +81,8 @@
                 <label class="form-label" for="basic-default-content">Reading</label>
                 <textarea
                   class="form-control @error('reading') is-invalid @enderror"
-                  placeholder="Type content..."
-                  id="reading"
+                  placeholder="Bible reading here..."
+                  id="editor01"
                   name="reading"
                 >{{ old('reading') }}</textarea>
 
@@ -79,8 +97,8 @@
                 <label class="form-label" for="basic-default-content">Content</label>
                 <textarea
                   class="form-control @error('body') is-invalid @enderror"
-                  placeholder="Type content..."
-                  id="body"
+                  placeholder="Content here..."
+                  id="editor"
                   name="body"
                 >{{ old('body') }}</textarea>
 
@@ -91,19 +109,7 @@
                   @enderror
               </div>
 
-              <div class="mb-3">
-                <label>publish status</label>
-                <select class="form-control @error('published') is-invalid @enderror" name="published" id="published">
-                    <option selected value="1">Publish</option>
-                    <option value="0">Unpublish</option>
-                </select>
-
-                @error('published')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
+              
 
               <button type="submit" class="btn btn-primary">Publish</button>
             </form>

@@ -19,10 +19,9 @@
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-content">Content</label>
                     <textarea
-                      id="basic-default-content"
                       class="form-control @error('recommend') is-invalid @enderror"
                       placeholder="Type content..."
-                      id="recommend"
+                      id="editor"
                       name="recommend"
                     >{{ $recommend ?? old('recommend') }}</textarea>
     

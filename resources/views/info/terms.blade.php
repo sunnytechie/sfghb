@@ -19,10 +19,9 @@
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-content">Content</label>
                     <textarea
-                      id="basic-default-content"
                       class="form-control @error('terms') is-invalid @enderror"
                       placeholder="Type content..."
-                      id="terms"
+                      id="editor"
                       name="terms"
                     >{{ $terms ?? old('terms') }}</textarea>
     

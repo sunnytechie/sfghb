@@ -52,7 +52,6 @@
         <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
         <!-- Page CSS -->
-
         <!-- Helpers -->
         <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
@@ -62,6 +61,31 @@
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        {{-- Ckeditor --}}
+        <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+
+        {{-- datatables --}}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        
+        {{-- Dropify css --}}
+        <link rel="stylesheet" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+        <style>
+            .ck-editor__editable[role="textbox"] {
+                /* editing area */
+                min-height: 200px;
+            }
+            .ck-content .image {
+                /* block images */
+                max-width: 80%;
+                margin: 20px auto;
+            }
+
+            input, select, option {
+                border-radius: 0px !important;
+            }
+      </style>
     </head>
     <body class="font-sans antialiased">
          <!-- Layout wrapper -->
@@ -96,6 +120,9 @@
                 {{-- Google CDN --}}
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <!-- Core JS -->
+
+                {{-- Datatable --}}
+
                 <!-- build:js assets/vendor/js/core.js -->
                 <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
                 <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
@@ -116,7 +143,23 @@
         
                 <!-- Place this tag in your head or just before your close body tag. -->
                 <script async defer src="https://buttons.github.io/buttons.js"></script>
-        
+
+                
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#editor01' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
+
+            <script>
+                ClassicEditor
+                    .create( document.querySelector( '#editor' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+            </script>
         
                 <script>
                     setTimeout(() => {
@@ -125,63 +168,62 @@
                         // 👇️ hides element (still takes up space on page)
                         // box.style.visibility = 'hidden';
                         }, 1500);
-                </script>
-
-            <!-- The core Firebase JS SDK is always required and must be listed first -->
-            <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
-
-            <!-- TODO: Add SDKs for Firebase products that you want to use
-                https://firebase.google.com/docs/web/setup#available-libraries -->
-
-            <script>
-                // Your web app's Firebase configuration
-                var firebaseConfig = {
-                    apiKey: "AIzaSyBofYN7-qW0zO11WeeMo0o4Gbe4qy-46v8",
-                    authDomain: "sfghb-65a08.firebaseapp.com",
-                    projectId: "sfghb-65a08",
-                    storageBucket: "sfghb-65a08.appspot.com",
-                    messagingSenderId: "670553009664",
-                    appId: "1:670553009664:web:f10bf041c1d80689e472e5",
-                    measurementId: "G-3QXEFF14ZN"
-                };
-                // Initialize Firebase
-                firebase.initializeApp(firebaseConfig);
-
-                const messaging = firebase.messaging();
-
-                function initFirebaseMessagingRegistration() {
-                    messaging.requestPermission().then(function () {
-                        return messaging.getToken()
-                    }).then(function(token) {
-                        
-                        axios.post("{{ route('fcmToken') }}",{
-                            _method:"PATCH",
-                            token
-                        }).then(({data})=>{
-                            console.log(data)
-                        }).catch(({response:{data}})=>{
-                            console.error(data)
-                        })
-
-                    }).catch(function (err) {
-                        console.log(`Token Error :: ${err}`);
-                    });
+                </script>      
+           
+           {{-- Dropify --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // Basic
+            $('.dropify').dropify();
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove:  'Supprimer',
+                    error:   'Désolé, le fichier trop volumineux'
                 }
-
-                initFirebaseMessagingRegistration();
-            
-                messaging.onMessage(function({data:{body,title}}){
-                    new Notification(title, {body});
-                });
-            </script>
-
-<script>
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            });
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element){
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function(event, element){
+                alert('File deleted');
+            });
+            drEvent.on('dropify.errors', function(event, element){
+                console.log('Has Errors');
+            });
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e){
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
+    {{-- disable submit button when it clicked --}}
+    <script>
+        $('form').submit(function (event) {
+        if ($(this).hasClass('submitted')) {
+            event.preventDefault();
+            document.getElementById("submit").disabled = true;
+        }
+        else {
+            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+            $(this).addClass('submitted');
+        }
     });
-  </script>
+    </script>
+
+   
     </body>
 </html>

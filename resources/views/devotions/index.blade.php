@@ -14,7 +14,7 @@
           </div>
           
           <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table id="paginatetable" class="table">
               <thead>
                 <tr>
                   <th></th>
@@ -77,4 +77,9 @@
         <!--/ Responsive Table -->
       </div>
       <!-- / Content -->
+      <script>
+        $(document).ready(function () {
+            $('#paginatetable').DataTable();
+        });
+    </script>
 </x-app-layout>

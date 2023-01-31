@@ -31,10 +31,9 @@
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-content">Content</label>
                     <textarea
-                      id="basic-default-content"
                       class="form-control @error('body') is-invalid @enderror"
                       placeholder="Type content..."
-                      id="body"
+                      id="editor"
                       name="body"
                     >{{ old('body') ?? $body }}</textarea>
     
@@ -46,7 +45,7 @@
                   </div>
 
     
-                  <button type="submit" class="btn btn-primary">Publish</button>
+                  <button type="submit" class="btn btn-primary rounded-0">Publish</button>
                 </form>
               </div>
             </div>

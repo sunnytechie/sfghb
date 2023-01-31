@@ -19,10 +19,9 @@
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-content">Content</label>
                     <textarea
-                      id="basic-default-content"
                       class="form-control @error('privacy_policy') is-invalid @enderror"
                       placeholder="Type content..."
-                      id="privacy_policy"
+                      id="editor"
                       name="privacy_policy"
                     >{{ $privacy_policy ?? old('privacy_policy') }}</textarea>
     
@@ -33,7 +32,7 @@
                       @enderror
                     </div>
     
-                  <button type="submit" class="btn btn-primary">Publish</button>
+                  <button type="submit" class="btn btn-primary btn-sm rounded-0">Publish</button>
                 </form>
               </div>
             </div>

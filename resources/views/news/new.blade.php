@@ -14,10 +14,10 @@
               <div class="card-body">
                 <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
                   @csrf
-    
-                  <div class="mb-3">
+                <div class="row">
+                  <div class="col-md-6">
                     <label class="form-label" for="basic-default-title">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') }}" id="title" name="title" placeholder="Type..." />
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') }}" id="title" name="title" placeholder="Title here" />
                     
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -25,10 +25,25 @@
                         </span>
                       @enderror
                   </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="basic-default-title">publish status</label>
+                    <select class="form-control @error('published') is-invalid @enderror" name="published" id="published">
+                        <option selected value="1">Publish</option>
+                        <option value="0">Unpublish</option>
+                    </select>
+    
+                    @error('published')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                  </div>
+                </div>
     
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-thumbnail">Thumbnail</label>
-                    <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="basic-default-thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" name="thumbnail" />
+                    <input type="file" class="dropify form-control @error('thumbnail') is-invalid @enderror" id="basic-default-thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" name="thumbnail" />
                     
                     @error('thumbnail')
                         <span class="invalid-feedback" role="alert">
@@ -40,10 +55,9 @@
                   <div class="mb-3">
                     <label class="form-label" for="basic-default-content">Content</label>
                     <textarea
-                      id="basic-default-content"
                       class="form-control @error('body') is-invalid @enderror"
-                      placeholder="Type content..."
-                      id="body"
+                      placeholder="Post..."
+                      id="editor"
                       name="body"
                     >{{ old('body') }}</textarea>
     
@@ -54,21 +68,9 @@
                       @enderror
                   </div>
     
-                  <div class="mb-3">
-                    <label>publish status</label>
-                    <select class="form-control @error('published') is-invalid @enderror" name="published" id="published">
-                        <option selected value="1">Publish</option>
-                        <option value="0">Unpublish</option>
-                    </select>
+                  
     
-                    @error('published')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
-                </div>
-    
-                  <button type="submit" class="btn btn-primary">Publish</button>
+                  <button type="submit" class="btn btn-primary rounded-0">Publish</button>
                 </form>
               </div>
             </div>

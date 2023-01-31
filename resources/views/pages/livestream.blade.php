@@ -18,7 +18,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="basic-default-title">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') ?? $title }}" id="title" name="title" placeholder="Type..." />
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') ?? $title }}" id="title" name="title" placeholder="Title here..." />
                     
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="basic-default-url">Video</label>
-                    <input type="url" class="form-control @error('url') is-invalid @enderror" id="basic-default-url" value="{{ old('url') ?? $url }}" id="url" name="url" placeholder="Type..." />
+                    <label class="form-label" for="basic-default-url">Video link</label>
+                    <input type="url" class="form-control @error('url') is-invalid @enderror" id="basic-default-url" value="{{ old('url') ?? $url }}" id="url" name="url" placeholder="https://www......." />
                     
                     @error('url')
                         <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@
               @enderror
             </div>
     
-                  <button type="submit" class="btn btn-primary">Publish</button>
+                  <button type="submit" class="btn btn-primary rounded-0">Publish</button>
                 </form>
               </div>
             </div>

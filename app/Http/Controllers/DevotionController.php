@@ -49,14 +49,16 @@ class DevotionController extends Controller
         request()->validate([
             'title' => 'required',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'audio' => 'required|mimes:mp3',
+            'audio' => 'mimes:mp3',
             'body' => 'required',
             'reading' => 'required',
             'read_date' => 'required',
             'published' => '',
         ]);
 
-        $audioPath = request('audio')->store('audio', 'public');
+        if ($request->has('audio')) {
+            $audioPath = request('audio')->store('audio', 'public');
+        }
 
         $imagePath = request('thumbnail')->store('uploads', 'public');
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
@@ -65,7 +67,9 @@ class DevotionController extends Controller
         $devotion = new Devotion;
         $devotion->title = $request->title;
         $devotion->thumbnail = $imagePath;
-        $devotion->audio = $audioPath;
+        if ($request->audio) {
+            $devotion->audio = $audioPath;
+        }
         $devotion->body = $request->body;
         $devotion->reading = $request->reading;
         $devotion->read_date = $request->read_date;

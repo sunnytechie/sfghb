@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('devotions', function (Blueprint $table) {
-            $table->text('audio');
+            $table->text('audio')->nullable();
         });
     }
 

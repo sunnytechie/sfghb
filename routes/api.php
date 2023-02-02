@@ -26,6 +26,7 @@ Route::post('/forgot-password', [App\Http\Controllers\Api\Auth\NewPasswordContro
 //Api lists
 Route::get('/devotions', [App\Http\Controllers\Api\DevotionController::class, 'index']);
 Route::get('/devotion/today', [App\Http\Controllers\Api\DevotionController::class, 'show']);
+Route::get('/devotion/this-week', [App\Http\Controllers\Api\DevotionController::class, 'thisWeek']);
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/health', [App\Http\Controllers\Api\HealthController::class, 'index']);

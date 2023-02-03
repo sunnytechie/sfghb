@@ -16,8 +16,8 @@
                   @csrf
     
                   <div class="mb-3">
-                    <label class="form-label" for="basic-default-title">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') }}" id="title" name="title" placeholder="Type..." />
+                    <label class="form-label" for="basic-default-title">Notification title</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') }}" id="title" name="title" placeholder="Enter title of notification" />
                     
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
                       @enderror
                   </div>
 
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                     <label class="form-label" for="basic-default-title">Thumbnail</label>
                     <input type="file" class="form-control @error('img') is-invalid @enderror" id="basic-default-img" value="{{ old('img') }}" id="img" name="img" placeholder="Type..." />
                     
@@ -35,14 +35,14 @@
                             <strong>{{ $message }}</strong>
                         </span>
                       @enderror
-                  </div>
+                  </div> --}}
     
                   <div class="mb-3">
-                    <label class="form-label" for="basic-default-content">Content</label>
+                    <label class="form-label" for="basic-default-content">Notification text</label>
                     <textarea
                       class="form-control @error('body') is-invalid @enderror"
-                      placeholder="Type content..."
-                      id="body"
+                      placeholder="Enter notification text"
+                      id="editor"
                       name="body"
                     >{{ old('body') }}</textarea>
     

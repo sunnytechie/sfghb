@@ -14,7 +14,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-        $donations = Donation::orderBy('created_at', 'desc')->paginate();
+        $donations = Donation::orderBy('created_at', 'desc')->get();
         return view('donations.index', compact('donations'));
     }
 

@@ -15,7 +15,7 @@ class HealthController extends Controller
      */
     public function index()
     {
-        $healths = Health::orderBy('created_at', 'desc')->paginate();
+        $healths = Health::orderBy('created_at', 'desc')->get();
         return view('health.index', compact('healths'));
     }
 

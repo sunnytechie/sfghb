@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.index')
+
+@section('content')
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -16,7 +18,7 @@
           </div>
           
           <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table id="myTable" class="table table-striped table-bordered table-hover table-sm" style="width:100%">
               <thead>
                 <tr>
                   <th>S/N</th>
@@ -54,15 +56,11 @@
               </tbody>
             </table>
           </div>
-          <nav aria-label="Page navigation example" class="mx-3">
-            <ul class="pagination">
-              {!! $admins->links() !!}
-            </ul>
-          </nav>
+          
         </div>
         <!--/ Basic Bootstrap Table -->
         <!--/ Responsive Table -->
-      </div>
+    </div>
       <!-- / Content -->
        <!-- Modal -->
        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
@@ -124,4 +122,5 @@
           
         </div>
       </div>
-</x-app-layout>
+
+@endsection

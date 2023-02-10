@@ -1,5 +1,6 @@
-<x-app-layout>
-    <!-- Content -->
+@extends('layouts.index')
+
+@section('content')
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <!-- Basic Bootstrap Table -->
@@ -13,7 +14,7 @@
           </div>
           
           <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table id="myTable" class="table table-striped table-bordered table-hover table-sm" style="width:100%">
               <thead>
                 <tr>
                   <th>S/N</th>
@@ -49,12 +50,6 @@
               </tbody>
             </table>
           </div>
-
-          <nav aria-label="Page navigation example" class="mx-3">
-            <ul class="pagination">
-              {!! $payments->links() !!}
-            </ul>
-          </nav>
         </div>
         <!--/ Basic Bootstrap Table -->
 
@@ -64,4 +59,4 @@
         <!--/ Responsive Table -->
       </div>
       <!-- / Content -->
-</x-app-layout>
+@endsection

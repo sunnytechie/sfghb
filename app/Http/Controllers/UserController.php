@@ -17,13 +17,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at', 'desc')->paginate();
+        $users = User::orderBy('created_at', 'desc')->get();
         return view('participants.users', compact('users'));
     }
 
     public function adminUser()
     {
-        $admins = User::orderBy('created_at', 'desc')->where('is_admin', 1)->paginate();
+        $admins = User::orderBy('created_at', 'desc')->where('is_admin', 1)->get();
         return view('participants.admin', compact('admins'));
     }
 

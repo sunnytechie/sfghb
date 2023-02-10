@@ -59,16 +59,15 @@
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <script src="{{ asset('assets/js/config.js') }}"></script>
         <!-- Scripts -->
+
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
+        {{-- Tiny MCE --}}
         <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        
         {{-- Ckeditor --}}
         <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
 
-        {{-- datatables --}}
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-        
         {{-- Dropify css --}}
         <link rel="stylesheet" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
         <style>
@@ -117,58 +116,55 @@
             <div class="layout-overlay layout-menu-toggle"></div>
         </div>
 
-                {{-- Google CDN --}}
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                <!-- Core JS -->
+        {{-- Google CDN --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Core JS -->
+        <!-- build:js assets/vendor/js/core.js -->
+        <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+        <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+        <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-                {{-- Datatable --}}
+        <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
+        <!-- endbuild -->
 
-                <!-- build:js assets/vendor/js/core.js -->
-                <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
-                <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
-                <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
-                <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-        
-                <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
-                <!-- endbuild -->
-        
-                <!-- Vendors JS -->
-                <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-        
-                <!-- Main JS -->
-                <script src="{{ asset('assets/js/main.js') }}"></script>
-        
-                <!-- Page JS -->
-                <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
-        
-                <!-- Place this tag in your head or just before your close body tag. -->
-                <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Vendors JS -->
+        <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+
+        <!-- Main JS -->
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+
+        <!-- Page JS -->
+        <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
 
                 
-                <script>
-                    ClassicEditor
-                        .create( document.querySelector( '#editor01' ) )
-                        .catch( error => {
-                            console.error( error );
-                        } );
-                </script>
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor01' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
 
-            <script>
-                ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
-            </script>
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
         
-                <script>
-                    setTimeout(() => {
-                        const box = document.getElementById('bottomAlert');
-                        // 👇️ removes element from DOM
-                        // 👇️ hides element (still takes up space on page)
-                        // box.style.visibility = 'hidden';
-                        }, 1500);
-                </script>      
+        <script>
+            setTimeout(() => {
+                const box = document.getElementById('bottomAlert');
+                // 👇️ removes element from DOM
+                // 👇️ hides element (still takes up space on page)
+                // box.style.visibility = 'hidden';
+                }, 1500);
+        </script>      
            
            {{-- Dropify --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -222,8 +218,6 @@
             $(this).addClass('submitted');
         }
     });
-    </script>
-
-   
+    </script>      
     </body>
 </html>

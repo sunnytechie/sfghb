@@ -14,7 +14,7 @@ class AudioSerieController extends Controller
      */
     public function index()
     {
-        $series = Audioserie::orderBy('created_at', 'desc')->with('audio')->paginate();
+        $series = Audioserie::orderBy('created_at', 'desc')->with('audio')->get();
         
         return view('series.index', compact('series'));
     }

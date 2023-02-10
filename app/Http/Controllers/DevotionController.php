@@ -15,7 +15,8 @@ class DevotionController extends Controller
      */
     public function index()
     {
-        $devotions = Devotion::orderBy('created_at', 'desc')->paginate();
+        $devotions = Devotion::orderBy('created_at', 'desc')->get();
+        
         return view('devotions.index', compact('devotions'));
     }
 

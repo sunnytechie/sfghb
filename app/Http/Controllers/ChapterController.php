@@ -14,7 +14,7 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        $chapters = Chapter::orderBy('created_at', 'desc')->paginate();
+        $chapters = Chapter::orderBy('created_at', 'desc')->get();
         return view('chapters.index', compact('chapters'));
     }
 

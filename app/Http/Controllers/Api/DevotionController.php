@@ -20,15 +20,15 @@ class DevotionController extends Controller
     }
 
     public function thisWeek() {
-            $today = Carbon::now();
-            
-            $thisWeekdevotions = Devotion::whereBetween('read_date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-            ->where('published', 1)->get();
-            //$thisWeekdevotions = Devotion::orderBy('read_date', 'desc')
-                //->whereDate('read_date', '==', $today->startOfWeek())
-                //->whereDate('read_date', '<=', $today->endOfWeek())
-                //->where('published', 1)
-                //->get();
+        $startOfWeek = Carbon::now()->startOfWeek(Carbon::SUNDAY);
+        $endOfWeek = Carbon::now()->endOfWeek(Carbon::SATURDAY);
+        
+        $thisWeekdevotions = Devotion::whereBetween('read_date', [$startOfWeek, $endOfWeek])->where('published', 1)->get();
+        //$thisWeekdevotions = Devotion::orderBy('read_date', 'desc')
+            //->whereDate('read_date', '==', $today->startOfWeek())
+            //->whereDate('read_date', '<=', $today->endOfWeek())
+            //->where('published', 1)
+            //->get();
 
         return response()->json([
             'devotion' => $thisWeekdevotions,

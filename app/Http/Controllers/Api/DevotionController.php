@@ -23,7 +23,11 @@ class DevotionController extends Controller
         $startOfWeek = Carbon::now()->startOfWeek(Carbon::SUNDAY);
         $endOfWeek = Carbon::now()->endOfWeek(Carbon::SATURDAY);
         
-        $thisWeekdevotions = Devotion::whereBetween('read_date', [$startOfWeek, $endOfWeek])->where('published', 1)->get();
+        $thisWeekdevotions = Devotion::where('read_date', '>=', $startOfWeek)
+                            ->where('read_date', '<=', $endOfWeek)
+                            ->where('published', 1)
+                            ->get();
+
         //$thisWeekdevotions = Devotion::orderBy('read_date', 'desc')
             //->whereDate('read_date', '==', $today->startOfWeek())
             //->whereDate('read_date', '<=', $today->endOfWeek())

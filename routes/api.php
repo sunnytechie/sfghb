@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 //api for user register
 Route::post('/register', [App\Http\Controllers\Api\Auth\RegisterController::class, 'register']);
+Route::post('/auth-verify-otp', [App\Http\Controllers\Api\Auth\OtpVerifyController::class, 'verify']);
+Route::post('/auth-send/resend-otp', [App\Http\Controllers\Api\Auth\OtpVerifyController::class, 'sendVerificationTokenToEmail']);
+
 //api for user login
 Route::post('/login', [App\Http\Controllers\Api\Auth\LoginController::class, 'login']);
 //api for google login

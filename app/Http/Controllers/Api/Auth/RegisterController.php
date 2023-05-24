@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use Carbon\Carbon;
+use App\Models\Otp;
 use App\Models\User;
+use App\Mail\OtpEmail;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 
@@ -59,7 +62,15 @@ class RegisterController extends Controller
             ]);
 
             //send email verify at 
-            $user->sendEmailVerificationNotification();
+            //$user->sendEmailVerificationNotification();
+            $pin = mt_rand(1000, 9999);
+            $subject = "Your SFGHB Email Verification Code.";
+            Mail::to($user->email)->send(new OtpEmail($subject, $pin));
+            
+            Otp::create([
+                'token' => $pin,
+                'email' => $user->email,
+            ]);
 
             //free trial for 7 days on payment
             $validity = Carbon::today()->addDays(7);

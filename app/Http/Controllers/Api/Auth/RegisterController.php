@@ -61,8 +61,10 @@ class RegisterController extends Controller
                 'password' => Hash::make($input['password']),
             ]);
 
-            //send email verify at 
-            //$user->sendEmailVerificationNotification();
+            //Delete later
+            $user->sendEmailVerificationNotification();
+
+            //New
             $pin = mt_rand(1000, 9999);
             $subject = "Your SFGHB Email Verification Code.";
             Mail::to($user->email)->send(new OtpEmail($subject, $pin));

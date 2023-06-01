@@ -17,6 +17,11 @@ class Devotion extends Model
         'read_date',
         'published',
         'audio',
+        'anchor_bible_text',
+        'anchor_bible_chapter_verse',
+        'bible_reading_chapter_verse',
+        'prayer',
+        'further_reading',
     ];
 
     public function devotioncomments()

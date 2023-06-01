@@ -55,6 +55,11 @@ class DevotionController extends Controller
             'reading' => 'required',
             'read_date' => 'required',
             'published' => '',
+            'anchor_bible_text' => '',
+            'anchor_bible_chapter_verse' => '',
+            'bible_reading_chapter_verse' => '',
+            'prayer' => '',
+            'further_reading' => '',
         ]);
 
         if ($request->has('audio')) {
@@ -75,6 +80,11 @@ class DevotionController extends Controller
         $devotion->reading = $request->reading;
         $devotion->read_date = $request->read_date;
         $devotion->published = $request->published;
+        $devotion->anchor_bible_text = $request->anchor_bible_text;
+        $devotion->anchor_bible_chapter_verse = $request->anchor_bible_chapter_verse;
+        $devotion->bible_reading_chapter_verse = $request->bible_reading_chapter_verse;
+        $devotion->prayer = $request->prayer;
+        $devotion->further_reading = $request->further_reading;
         $devotion->save();
 
         $devotionID = $devotion->id;
@@ -111,7 +121,7 @@ class DevotionController extends Controller
         $read_date = $devotion->read_date;
         $published = $devotion->published;
 
-        return view('devotions.edit', compact('title', 'published', 'audioFile', 'thumbnail', 'body', 'reading', 'read_date', 'id'));
+        return view('devotions.edit', compact('title', 'devotion', 'published', 'audioFile', 'thumbnail', 'body', 'reading', 'read_date', 'id'));
     }
 
     /**
@@ -130,7 +140,12 @@ class DevotionController extends Controller
             'body' => 'required',
             'reading' => 'required',
             'read_date' => 'required',
-            'published' => 'required'
+            'published' => 'required',
+            'anchor_bible_text' => '',
+            'anchor_bible_chapter_verse' => '',
+            'bible_reading_chapter_verse' => '',
+            'prayer' => '',
+            'further_reading' => '',
         ]);
 
         //store thumbnail
@@ -157,6 +172,11 @@ class DevotionController extends Controller
         $devotion->reading = $request->reading;
         $devotion->read_date = $request->read_date;
         $devotion->published = $request->published;
+        $devotion->anchor_bible_text = $request->anchor_bible_text;
+        $devotion->anchor_bible_chapter_verse = $request->anchor_bible_chapter_verse;
+        $devotion->bible_reading_chapter_verse = $request->bible_reading_chapter_verse;
+        $devotion->prayer = $request->prayer;
+        $devotion->further_reading = $request->further_reading;
         $devotion->save();
         
         $devotionID = $id;

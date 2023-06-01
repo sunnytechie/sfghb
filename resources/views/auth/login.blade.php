@@ -82,7 +82,7 @@
   
   
                   <div class="mb-4 d-flex justify-content-end">
-                    <button class="btn btn-primary rounded-0 d-grid w-50" type="submit" style="background: #1781ec">Sign in</button>
+                    <button class="btn btn-primary rounded-4 border-0 shadow-red-500 d-grid w-100" type="submit" style="background: #A40D0B">Sign in</button>
                   </div>
   
                    {{-- <div class="mb-3">

@@ -42,6 +42,67 @@
                       @enderror
                     </div>
                   </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6 from-group">
+                      <label class="form-label" for="anchor_bible_text">Anchor Scripture</label>
+                      <input type="text" class="form-control @error('anchor_bible_text') is-invalid @enderror" id="basic-default-anchor_bible_text" value="{{ $devotion->anchor_bible_text ?? old('anchor_bible_text') }}" id="anchor_bible_text" name="anchor_bible_text" placeholder="For God so love the world..." />
+                      
+                      @error('anchor_bible_text')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                    </div>
+    
+                    <div class="col-md-6 from-group">
+                      <label class="form-label" for="anchor_bible_chapter_verse">Anchor Bible reference</label>
+                      <input type="text" class="form-control @error('anchor_bible_chapter_verse') is-invalid @enderror" id="basic-default-anchor_bible_chapter_verse" value="{{ $devotion->anchor_bible_chapter_verse ?? old('anchor_bible_chapter_verse') }}" id="anchor_bible_chapter_verse" name="anchor_bible_chapter_verse" placeholder="John 3:16" />
+                      
+                      @error('anchor_bible_chapter_verse')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                    </div>
+                  </div>
+    
+                  <div class="row mb-3">
+                    <div class="col-md-6 from-group">
+                      <label class="form-label" for="bible_reading_chapter_verse">Bible reading reference</label>
+                      <input type="text" class="form-control @error('bible_reading_chapter_verse') is-invalid @enderror" id="basic-default-bible_reading_chapter_verse" value="{{ $devotion->bible_reading_chapter_verse ?? old('bible_reading_chapter_verse') }}" id="bible_reading_chapter_verse" name="bible_reading_chapter_verse" placeholder="John 3:1-16" />
+                      
+                      @error('bible_reading_chapter_verse')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                    </div>
+    
+                    <div class="col-md-6 from-group">
+                      <label class="form-label" for="further_reading">Further reading reference</label>
+                      <input type="text" class="form-control @error('further_reading') is-invalid @enderror" id="basic-default-further_reading" value="{{ $devotion->further_reading ?? old('further_reading') }}" id="further_reading" name="further_reading" placeholder="John 3:16-20" />
+                      
+                      @error('further_reading')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                    </div>
+                  </div>
+    
+                  <div class="row mb-3">
+                    <div class="col-md-12 from-group">
+                      <label class="form-label" for="prayer">prayer</label>
+                      <input type="text" class="form-control @error('prayer') is-invalid @enderror" id="basic-default-prayer" value="{{ $devotion->prayer ?? old('prayer') }}" id="prayer" name="prayer" placeholder="Our Dearly beloved heavenly father..." />
+                      
+                        @error('prayer')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                    </div>
+                  </div>
     
                   <div class="row mb-3">
                   <div class="col-md-6">

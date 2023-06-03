@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [App\Http\Controllers\Api\Auth\RegisterController::class, 'register']);
 Route::post('/auth-verify-otp', [App\Http\Controllers\Api\Auth\OtpVerifyController::class, 'verify']);
 Route::post('/auth-send/resend-otp', [App\Http\Controllers\Api\Auth\OtpVerifyController::class, 'sendVerificationTokenToEmail']);
+//Get user details with ID
+Route::get('/auth-user/{id}', [App\Http\Controllers\Api\Auth\UserInfoController::class, 'user']);
 
 //api for user login
 Route::post('/login', [App\Http\Controllers\Api\Auth\LoginController::class, 'login']);
@@ -32,7 +34,6 @@ Route::get('/devotions', [App\Http\Controllers\Api\DevotionController::class, 'i
 Route::get('/devotion/today', [App\Http\Controllers\Api\DevotionController::class, 'show']);
 Route::get('/devotion/this-week', [App\Http\Controllers\Api\DevotionController::class, 'thisWeek']);
 Route::get('/devotion/monthly', [App\Http\Controllers\Api\DevotionController::class, 'monthly']);
-
 
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);

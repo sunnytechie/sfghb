@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Paykey;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 
 class PaymentController extends Controller
 {
@@ -292,6 +293,34 @@ class PaymentController extends Controller
 
 
 
+    }
+
+    public function priceInfo(Request $request) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $paykeys = Paykey::orderBy('created_at', 'desc')->first();
+                return response()->json([
+                    'paykeys' => $paykeys,
+                    'status' => 1,
+                ]);
     }
 
 }

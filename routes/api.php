@@ -65,6 +65,7 @@ Route::put('/update-password/{id}', [App\Http\Controllers\Api\UpdatePasswordCont
 //Subscribe Monthly and Yearly on sfghb
 Route::post('/user/subscribe-monthly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payMonthly']);
 Route::post('/user/subscribe-yearly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payYearly']);
+Route::get('/user/price-info', [App\Http\Controllers\Api\PaymentController::class, 'priceInfo']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

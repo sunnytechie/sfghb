@@ -35,6 +35,11 @@ Route::get('/devotion/today', [App\Http\Controllers\Api\DevotionController::clas
 Route::get('/devotion/this-week', [App\Http\Controllers\Api\DevotionController::class, 'thisWeek']);
 Route::get('/devotion/monthly', [App\Http\Controllers\Api\DevotionController::class, 'monthly']);
 
+//reels
+Route::get('/reels', [App\Http\Controllers\Api\ReelController::class, 'index']);
+//ebooks
+Route::get('/ebook', [App\Http\Controllers\Api\EbookController::class, 'index']);
+
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/health', [App\Http\Controllers\Api\HealthController::class, 'index']);

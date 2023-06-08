@@ -45,8 +45,20 @@ class EbookController extends Controller
             'published' => '',
         ]);
 
+        //$imagePath = request('image')->store('ebooks', 'public');
+        //$image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         $imagePath = request('image')->store('ebooks', 'public');
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make(public_path("storage/{$imagePath}"));
+
+        // Adjust the dimensions for mobile devices
+        $maxWidth = 600; // Set the desired maximum width for mobile
+        $maxHeight = 800; // Set the desired maximum height for mobile
+
+        // Resize the image while preserving the aspect ratio
+        $image->resize($maxWidth, $maxHeight, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
         $image->save();
 
         $ebook = new Ebook();
@@ -100,8 +112,20 @@ class EbookController extends Controller
         ]);
 
         if ($request->has('image')) {
+        //$imagePath = request('image')->store('ebooks', 'public');
+        //$image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         $imagePath = request('image')->store('ebooks', 'public');
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make(public_path("storage/{$imagePath}"));
+
+        // Adjust the dimensions for mobile devices
+        $maxWidth = 600; // Set the desired maximum width for mobile
+        $maxHeight = 800; // Set the desired maximum height for mobile
+
+        // Resize the image while preserving the aspect ratio
+        $image->resize($maxWidth, $maxHeight, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
         $image->save();
         }
 

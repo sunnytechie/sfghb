@@ -16,11 +16,13 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AudioSerieController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\EbookController;
 use App\Http\Controllers\LivestreamController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaykeyController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PushNotificationController;
+use App\Http\Controllers\ReelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,8 @@ Route::resource('paykeys', PaykeyController::class)->middleware(['auth', 'verifi
 Route::resource('users', UserController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('chapters', ChapterController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('purchases', PurchaseController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('ebooks', EbookController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('reels', ReelController::class)->middleware(['auth', 'verified', 'is_admin']);
 
 //Import routes
 Route::get('user-import-form', [App\Http\Controllers\UserController::class, 'userFileImportForm'])->name('user.import.form')->middleware(['auth', 'verified', 'is_admin']);

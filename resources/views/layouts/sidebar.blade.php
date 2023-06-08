@@ -119,9 +119,9 @@
 
       <!-- news -->      
       <li class="menu-item 
-      @if (request()->routeIs('news.index') || request()->routeIs('news.create') || request()->routeIs('news.edit'))
-      active
-      @endif">
+        @if (request()->routeIs('news.index') || request()->routeIs('news.create') || request()->routeIs('news.edit'))
+        active
+        @endif">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class='bx bxs-news' ></i>
           <div data-i18n="Layouts">News</div>
@@ -141,6 +141,96 @@
             active
           @endif">
             <a href="{{ route('news.create') }}" class="menu-link">
+              <div data-i18n="Without navbar">Add New</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Published</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">UnPublished</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Comments</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      {{-- Ebooks --}}   
+      <li class="menu-item 
+        @if (request()->routeIs('ebooks.index') || request()->routeIs('ebooks.create') || request()->routeIs('ebooks.edit'))
+        active
+        @endif">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class='bx bxs-book' ></i>
+          <div data-i18n="Layouts">Ebooks</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item 
+          @if(request()->routeIs('ebooks.index'))
+            active
+          @endif">
+            <a href="{{ route('ebooks.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Lists</div>
+            </a>
+          </li>
+          <li class="menu-item
+          @if(request()->routeIs('ebooks.create'))
+            active
+          @endif">
+            <a href="{{ route('ebooks.create') }}" class="menu-link">
+              <div data-i18n="Without navbar">Add New</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Published</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">UnPublished</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Comments</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      {{-- Reels --}}   
+      <li class="menu-item 
+        @if (request()->routeIs('reels.index') || request()->routeIs('reels.create') || request()->routeIs('reels.edit'))
+        active
+        @endif">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class='bx bxs-video' ></i>
+          <div data-i18n="Layouts">Reels</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item 
+          @if(request()->routeIs('reels.index'))
+            active
+          @endif">
+            <a href="{{ route('reels.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Lists</div>
+            </a>
+          </li>
+          <li class="menu-item
+          @if(request()->routeIs('reels.create'))
+            active
+          @endif">
+            <a href="{{ route('reels.create') }}" class="menu-link">
               <div data-i18n="Without navbar">Add New</div>
             </a>
           </li>

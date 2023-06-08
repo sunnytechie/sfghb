@@ -21,8 +21,14 @@ class PaykeyController extends Controller
         $paystack_live_public_key = $paykey->paystack_live_public_key;
         $devotion_price = $paykey->devotion_price;
         $devotion_usd_price = $paykey->devotion_usd_price;
+        $devotion_usd_price = $paykey->devotion_usd_price;
+        $naira_monthly_price = $paykey->naira_monthly_price;
+        $usd_monthly_price = $paykey->usd_monthly_price;
+        $naira_yearly_price = $paykey->naira_yearly_price;
+        $usd_yearly_price = $paykey->usd_yearly_price;
         $id = $paykey->id;
-        return view('paykeys.index', compact('paystack_test_secret_key', 'devotion_usd_price', 'devotion_price', 'id', 'paystack_test_public_key', 'paystack_live_secret_key', 'paystack_live_public_key',));
+        
+        return view('paykeys.index', compact('paystack_test_secret_key', 'naira_monthly_price', 'usd_monthly_price', 'naira_yearly_price', 'usd_yearly_price', 'devotion_usd_price', 'devotion_price', 'id', 'paystack_test_public_key', 'paystack_live_secret_key', 'paystack_live_public_key',));
     }
 
     /**

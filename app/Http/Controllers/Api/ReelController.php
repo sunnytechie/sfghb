@@ -12,7 +12,8 @@ class ReelController extends Controller
         $reels = Reel::orderBy('id', 'desc')->paginate($request->pageSize ?? 20);
 
         return response()->json([
-
+            'reels' => $reels,
+            'status' => 1
         ]);
     }
 }

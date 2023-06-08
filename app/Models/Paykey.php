@@ -16,5 +16,9 @@ class Paykey extends Model
         'paystack_live_public_key',
         'devotion_price',
         'devotion_usd_price',
+        'naira_monthly_price',
+        'usd_monthly_price',
+        'naira_yearly_price',
+        'usd_yearly_price',
     ];
 }

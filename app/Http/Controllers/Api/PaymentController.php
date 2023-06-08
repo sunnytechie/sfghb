@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class PaymentController extends Controller
 {
@@ -53,13 +54,11 @@ class PaymentController extends Controller
             if ($header == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjM0NTY3OTg3NjU0IiwibmFtZSI6IlNpc3RlcnMnIEZlbGxvd3NoaXAgSW50J2wiLCJpYXQiOjE1MTYyMzkwMjJ9.GziMCTMS3cwqX9RfATjEgX9ZpjBVxW8ASI2G8kGR5hY") {
                 //Allow access to data via the API end point
 
-                //Update validity if email already exits else store details
-        $validity = Carbon::today()->addDays(90);
+        
         $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
-       
         if ($checkEmailExist) {
             $payment = Payment::where('email', $request->email)->first();
-            $payment->validity = $validity;
+            $payment->validity = Carbon::today()->addDays(90);
             $payment->currency = $request->currency;
             $payment->amount = $request->amount;
             $payment->country = $request->country;
@@ -67,7 +66,8 @@ class PaymentController extends Controller
             $payment->tx_ref = $request->tx_ref;
             $payment->save();
 
-        } else {
+        } 
+        else {
             request()->validate([
                 'name' => 'required',
                 'email' => 'required',
@@ -84,7 +84,7 @@ class PaymentController extends Controller
             $payment->currency = $request->currency;
             $payment->amount = $request->amount;
             $payment->country = $request->country;
-            $payment->validity = $validity;
+            $payment->validity = Carbon::today()->addDays(90);;
             $payment->method = $request->method;
             $payment->tx_ref = $request->tx_ref;
             $payment->save();
@@ -94,8 +94,7 @@ class PaymentController extends Controller
             'status' => "You have successfully paid for searching for Gods heartbeat, thank you."
         ]);
 
-
-            } else {
+        } else {
                 $message = "Invalid request or token";
            return response()->json([
             'status' => "$message"
@@ -130,5 +129,169 @@ class PaymentController extends Controller
         
     }
 
+
+
+    public function payMonthly(Request $request, $user_id) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
+        if ($checkEmailExist) {
+            $payment = Payment::where('email', $request->email)->first();
+            $payment->validity = Carbon::today()->addDays(30);
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        } 
+        else {
+            request()->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'currency' => 'required',
+                'amount' => 'required',
+                'country' => '',
+                'method' => 'required',
+                'tx_ref' => 'required',
+            ]);
+    
+            $payment = new Payment;
+            $payment->name = $request->name;
+            $payment->email = $request->email;
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->validity = Carbon::today()->addDays(30);;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        }
+
+
+    }
+
+    public function payYearly(Request $request, $user_id) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
+        if ($checkEmailExist) {
+            $payment = Payment::where('email', $request->email)->first();
+            $payment->validity = Carbon::today()->addDays(365);
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        } 
+        else {
+            request()->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'currency' => 'required',
+                'amount' => 'required',
+                'country' => '',
+                'method' => 'required',
+                'tx_ref' => 'required',
+            ]);
+    
+            $payment = new Payment;
+            $payment->name = $request->name;
+            $payment->email = $request->email;
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->validity = Carbon::today()->addDays(365);;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        }
+
+
+
+    }
 
 }

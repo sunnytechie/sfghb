@@ -38,7 +38,8 @@ Route::get('/devotion/monthly', [App\Http\Controllers\Api\DevotionController::cl
 //reels
 Route::get('/reels', [App\Http\Controllers\Api\ReelController::class, 'index']);
 //ebooks
-Route::get('/ebook', [App\Http\Controllers\Api\EbookController::class, 'index']);
+Route::get('/ebooks', [App\Http\Controllers\Api\EbookController::class, 'index']);
+Route::post('/ebooks/request', [App\Http\Controllers\Api\EbookFormController::class, 'store']);
 
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
@@ -61,6 +62,9 @@ Route::put('/update-user/{id}', [App\Http\Controllers\Api\UpdateUserController::
 Route::put('/update-password/{id}', [App\Http\Controllers\Api\UpdatePasswordController::class, 'update']);
 //Route::post('/feedback', [App\Http\Controllers\Api\FeebackController::class, 'store']);
 
+//Subscribe Monthly and Yearly on sfghb
+Route::post('/user/subscribe-monthly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payMonthly']);
+Route::post('/user/subscribe-yearly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payYearly']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

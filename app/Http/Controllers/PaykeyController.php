@@ -102,6 +102,10 @@ class PaykeyController extends Controller
                             if ($request->has('devotion_usd_price')) {
                                 $paykey->devotion_usd_price = $request->devotion_usd_price;
                                 }
+                                $paykey->naira_monthly_price = $request->naira_monthly_price;
+                                $paykey->usd_monthly_price = $request->usd_monthly_price;
+                                $paykey->naira_yearly_price = $request->naira_yearly_price;
+                                $paykey->usd_yearly_price = $request->usd_yearly_price;
         $paykey->save();
 
         return redirect()->back()->with('message', 'This keys has been updated successfully.');

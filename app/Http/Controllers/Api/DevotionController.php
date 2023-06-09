@@ -28,16 +28,26 @@ class DevotionController extends Controller
                             ->where('published', 1)
                             ->get();
 
-        //$thisWeekdevotions = Devotion::orderBy('read_date', 'desc')
-            //->whereDate('read_date', '==', $today->startOfWeek())
-            //->whereDate('read_date', '<=', $today->endOfWeek())
-            //->where('published', 1)
-            //->get();
-
         return response()->json([
             'devotion' => $thisWeekdevotions,
         ]);
     }
+
+    public function paginateDevotionWeekly(Request $request) {
+        $startOfWeek = Carbon::now()->startOfWeek(Carbon::SUNDAY);
+        $endOfWeek = Carbon::now()->endOfWeek(Carbon::SATURDAY);
+        
+        $thisWeekdevotions = Devotion::where('read_date', '>=', $startOfWeek)
+                            ->where('read_date', '<=', $endOfWeek)
+                            ->where('published', 1)
+                            ->paginate($request->pageSize ?? 7);
+
+        return response()->json([
+            'weeklyDevotion' => $thisWeekdevotions,
+        ]);
+    }
+
+
 
     public function monthly(Request $request) {
         //$devotions = Devotion::orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->get();

@@ -16,4 +16,13 @@ class HealthController extends Controller
             'health' => $health,
         ]);
     }
+
+    public function paginateHealth(Request $request) {
+        $health = Health::orderBy('created_at', 'desc')
+        ->paginate($request->pageSize ?? 20);
+
+        return response()->json([
+            'health' => $health,
+        ]);
+    }
 }

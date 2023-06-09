@@ -15,4 +15,13 @@ class AudioSeriesController extends Controller
             'series' => $series,
         ]);
     }
+
+    public function paginateAudioSeries(Request $request) {
+        $series = Audioserie::orderBy('created_at', 'desc')->with('audio')
+        ->paginate($request->pageSize ?? 20);
+
+        return response()->json([
+            'series' => $series,
+        ]);
+    }
 }

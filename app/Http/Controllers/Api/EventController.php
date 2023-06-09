@@ -17,4 +17,14 @@ class EventController extends Controller
             'event' => $events,
         ]);
     }
+
+    public function paginateEvent(Request $request) {
+        $events = Event::orderBy('created_at', 'desc')
+                ->where('published', 1)
+                ->paginate($request->pageSize ?? 20);
+
+        return response()->json([
+            'event' => $events,
+        ]);
+    }
 }

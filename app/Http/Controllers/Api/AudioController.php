@@ -15,4 +15,13 @@ class AudioController extends Controller
             'audio' => $audio,
         ]);
     }
+
+    public function paginateAudio(Request $request) {
+        $audio = Audio::orderBy('created_at', 'desc')
+        ->paginate($request->pageSize ?? 20);
+
+        return response()->json([
+            'audio' => $audio,
+        ]);
+    }
 }

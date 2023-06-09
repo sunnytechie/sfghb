@@ -16,4 +16,13 @@ class FaqController extends Controller
             'faq' => $faqs,
         ]);
     }
+
+    public function paginateFaq(Request $request) {
+        $faqs = Faq::orderBy('created_at', 'desc')
+        ->paginate($request->pageSize ?? 20);
+
+        return response()->json([
+            'faq' => $faqs,
+        ]);
+    }
 }

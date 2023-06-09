@@ -41,6 +41,16 @@ Route::get('/reels', [App\Http\Controllers\Api\ReelController::class, 'index']);
 Route::get('/ebooks', [App\Http\Controllers\Api\EbookController::class, 'index']);
 Route::post('/ebooks/request', [App\Http\Controllers\Api\EbookFormController::class, 'store']);
 
+//paginated end points
+Route::get('/paginate-events', [App\Http\Controllers\Api\EventController::class, 'paginateEvent']);
+Route::get('/paginate-news', [App\Http\Controllers\Api\NewsController::class, 'paginateNews']);
+Route::get('/paginate-health', [App\Http\Controllers\Api\HealthController::class, 'paginateHealth']);
+Route::get('/paginate-audio', [App\Http\Controllers\Api\AudioController::class, 'paginateAudio']);
+Route::get('/paginate-audioseries', [App\Http\Controllers\Api\AudioSeriesController::class, 'paginateAudioSeries']);
+Route::get('/paginate-devotion/this-week', [App\Http\Controllers\Api\DevotionController::class, 'paginateDevotionWeekly']);
+Route::get('/paginate-faq', [App\Http\Controllers\Api\FaqController::class, 'paginateFaq']);
+//end paginated
+
 Route::get('/events', [App\Http\Controllers\Api\EventController::class, 'index']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/health', [App\Http\Controllers\Api\HealthController::class, 'index']);

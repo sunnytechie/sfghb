@@ -8,9 +8,8 @@ use App\Http\Controllers\Controller;
 
 class AudioController extends Controller
 {
-    public function index(Request $request) {
-        $audio = Audio::orderBy('created_at', 'desc')
-                ->paginate($request->pageSize ?? 20);
+    public function index() {
+        $audio = Audio::orderBy('created_at', 'desc')->get();
 
         return response()->json([
             'audio' => $audio,

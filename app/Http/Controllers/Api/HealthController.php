@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class HealthController extends Controller
 {
-    public function index(Request $request) {
+    public function index() {
         $health = Health::orderBy('created_at', 'desc')
-                ->paginate($request->pageSize ?? 20);
+                ->get();
 
         return response()->json([
             'health' => $health,

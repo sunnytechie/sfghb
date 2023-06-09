@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class FaqController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $faqs = Faq::orderBy('created_at', 'desc')
-                ->get();
+        ->paginate($request->pageSize ?? 20);
 
         return response()->json([
             'faq' => $faqs,

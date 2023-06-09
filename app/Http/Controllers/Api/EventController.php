@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $events = Event::orderBy('created_at', 'desc')
                 ->where('published', 1)
-                ->get();
+                ->paginate($request->pageSize ?? 20);
 
         return response()->json([
             'event' => $events,

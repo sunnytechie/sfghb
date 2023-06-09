@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $news = Newspaper::orderBy('created_at', 'desc')
                 ->where('published', 1)
-                ->get();
+                ->paginate($request->pageSize ?? 20);
 
         return response()->json([
             'news' => $news,

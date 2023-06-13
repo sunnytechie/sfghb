@@ -23,6 +23,8 @@ class EventController extends Controller
                 ->where('published', 1)
                 ->paginate($request->pageSize ?? 20);
 
+                //dd($events);
+
         return response()->json([
             'event' => $events,
         ]);

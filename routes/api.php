@@ -41,6 +41,9 @@ Route::get('/reels', [App\Http\Controllers\Api\ReelController::class, 'index']);
 Route::get('/ebooks', [App\Http\Controllers\Api\EbookController::class, 'index']);
 Route::post('/ebooks/request', [App\Http\Controllers\Api\EbookFormController::class, 'store']);
 
+//Analytics
+Route::post('/store/analytics', [App\Http\Controllers\Api\ViewController::class, 'store']);
+
 //paginated end points
 Route::get('/paginate-events', [App\Http\Controllers\Api\EventController::class, 'paginateEvent']);
 Route::get('/paginate-news', [App\Http\Controllers\Api\NewsController::class, 'paginateNews']);

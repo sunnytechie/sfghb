@@ -26,20 +26,19 @@ class PurchaseController extends Controller
                     'phone' => 'required',
                     'no_copy' => '',
                     'for_who' => '',
-                    'thumbnail' => '',
                     'currency' => '',
                     'amount' => 'required',
                     'method' => 'required',
                     'tx_ref' => 'required',
                 ]);
 
-                if ($request->thumbnail == "noImage") {
-                    $imagePath = "Null";
-                } else {
-                        $imagePath = request('thumbnail')->store('purchase', 'public');
-                        $image = Image::make(public_path("storage/{$imagePath}"));
-                        $image->save();
-                }
+                //if ($request->thumbnail == "noImage") {
+                //    $imagePath = "Null";
+                //} else {
+                //        $imagePath = request('thumbnail')->store('purchase', 'public');
+                //        $image = Image::make(public_path("storage/{$imagePath}"));
+                //        $image->save();
+                //}
                 
                 $purchase = new Purchase;
                 $purchase->name = $request->name;
@@ -47,7 +46,7 @@ class PurchaseController extends Controller
                 $purchase->phone = $request->phone;
                 $purchase->no_copy = $request->no_copy;
                 $purchase->for_who = $request->for_who;
-                $purchase->thumbnail = $imagePath;
+                //$purchase->thumbnail = $imagePath;
                 $purchase->currency = $request->currency;
                 $purchase->amount = $request->amount;
                 $purchase->method = $request->method;

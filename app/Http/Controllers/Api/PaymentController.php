@@ -54,8 +54,6 @@ class PaymentController extends Controller
         } else {
             if ($header == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjM0NTY3OTg3NjU0IiwibmFtZSI6IlNpc3RlcnMnIEZlbGxvd3NoaXAgSW50J2wiLCJpYXQiOjE1MTYyMzkwMjJ9.GziMCTMS3cwqX9RfATjEgX9ZpjBVxW8ASI2G8kGR5hY") {
                 //Allow access to data via the API end point
-
-        
         $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
         if ($checkEmailExist) {
             $payment = Payment::where('email', $request->email)->first();
@@ -317,10 +315,53 @@ class PaymentController extends Controller
         }
 
         $paykeys = Paykey::orderBy('created_at', 'desc')->first();
+
                 return response()->json([
                     'paykeys' => $paykeys,
                     'status' => 1,
                 ]);
     }
+
+
+    public function subscriptionValidity(Request $request) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $details = Payment::where('email', $request->email)->first();
+        if ($details) {
+            $expiry_date = $details->validity;
+        
+                return response()->json([
+                    'expiry_date' => $expiry_date,
+                    'status' => 1,
+                ]);
+        }
+        else {
+            return response()->json([
+                'message' => "Please subscribe to a plan.",
+                'status' => 0,
+            ]);
+        }
+        
+    
+    }
+
 
 }

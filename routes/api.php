@@ -80,6 +80,10 @@ Route::post('/user/subscribe-monthly/{id}', [App\Http\Controllers\Api\PaymentCon
 Route::post('/user/subscribe-yearly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payYearly']);
 Route::get('/user/price-info', [App\Http\Controllers\Api\PaymentController::class, 'priceInfo']);
 
+//checkExpiryDate
+Route::post('/user/subscription/expiry-date', [App\Http\Controllers\Api\PaymentController::class, 'subscriptionValidity']);
+ 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

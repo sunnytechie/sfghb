@@ -13,23 +13,27 @@ class PaykeyController extends Controller
         if (empty($header)) {
            $message = "Invalid request or token.";
            return response()->json([
-            'status' => "$message"
+            'message' => "$message",
+            'status' => 0
         ]);
-        } else {
-            if ($header == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2NTQzMjM0NTY3OTg3NjU0IiwibmFtZSI6IlNpc3RlcnMnIEZlbGxvd3NoaXAgSW50J2wiLCJpYXQiOjE1MTYyMzkwMjJ9.GziMCTMS3cwqX9RfATjEgX9ZpjBVxW8ASI2G8kGR5hY") {
-                //Allow access to data via the API end point
-                $paykeys = Paykey::orderBy('created_at', 'desc')->first();
-                return response()->json([
-                    'paykeys' => $paykeys,
-                ]);
-            } else {
-                $message = "Invalid request";
-           return response()->json([
-            'status' => "$message"
-        ]);
-            }
-            
         }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        //Allow access to data via the API end point
+        $paykeys = Paykey::orderBy('created_at', 'desc')->first();
+        return response()->json([
+            'paykeys' => $paykeys,
+        ]);
         
     }
 }

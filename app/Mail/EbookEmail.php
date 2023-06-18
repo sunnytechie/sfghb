@@ -20,7 +20,7 @@ class EbookEmail extends Mailable
      */
     public function __construct($name, $email, $phone)
     {
-        $compose = [
+        $this->compose = [
             'name' => $name,
             'email' => $email,
             'phone' => $phone,

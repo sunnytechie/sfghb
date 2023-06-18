@@ -70,7 +70,7 @@
   </head>
   <body>
     <div id="header">
-      <img height="50" width="150" src="https://www.sfghb.org/assets/img/sfghb.png" alt="SFGHB">
+      <img height="50" width="50" src="https://www.sfghb.org/assets/img/sfghb.png" alt="SFGHB">
     </div>
     <div id="content">
         <div class="text-1">New Purchase Request from SFGHB Customer.</div>
@@ -80,7 +80,7 @@
         <div class="text-4">
           Customer Name: {{ $compose['name'] }}<br>
           Customer Email: {{ $compose['email'] }}<br>
-          Customer Phone: {{ $compose['email'] }}
+          Customer Phone: {{ $compose['phone'] }}
         </div>
 
     </div>

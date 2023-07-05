@@ -252,6 +252,51 @@
         </ul>
       </li>
 
+      {{-- Youtube videos --}}   
+      <li class="menu-item 
+        @if (request()->routeIs('feeds.index') || request()->routeIs('reels.create') || request()->routeIs('reels.edit'))
+        active
+        @endif">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class='bx bxs-video' ></i>
+          <div data-i18n="Layouts">Youtube Videos</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item 
+          @if(request()->routeIs('feeds.index'))
+            active
+          @endif">
+            <a href="{{ route('feeds.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Lists</div>
+            </a>
+          </li>
+          <li class="menu-item
+          @if(request()->routeIs('feeds.create'))
+            active
+          @endif">
+            <a href="{{ route('feeds.create') }}" class="menu-link">
+              <div data-i18n="Without navbar">Add New</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Published</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">UnPublished</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div data-i18n="Container">Comments</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
       <li class="menu-item 
           @if(request()->routeIs('healths.index') || request()->routeIs('healths.create') || request()->routeIs('healths.edit'))
               active

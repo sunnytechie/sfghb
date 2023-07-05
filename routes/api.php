@@ -73,7 +73,7 @@ Route::post('/purchase', [App\Http\Controllers\Api\PurchaseController::class, 's
 Route::get('/notifications', [App\Http\Controllers\Api\PushNotificationController::class, 'index']);
 Route::put('/update-user/{id}', [App\Http\Controllers\Api\UpdateUserController::class, 'update']);
 Route::put('/update-password/{id}', [App\Http\Controllers\Api\UpdatePasswordController::class, 'update']);
-//Route::post('/feedback', [App\Http\Controllers\Api\FeebackController::class, 'store']);
+Route::get('/youtube/feeds', [App\Http\Controllers\Api\YoutubeController::class, 'index']);
 
 //Subscribe Monthly and Yearly on sfghb
 Route::post('/user/subscribe-monthly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payMonthly']);

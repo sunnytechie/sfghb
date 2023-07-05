@@ -23,6 +23,8 @@ use App\Http\Controllers\PaykeyController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\ReelController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\YoutubeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,9 +86,13 @@ Route::resource('chapters', ChapterController::class)->middleware(['auth', 'veri
 Route::resource('purchases', PurchaseController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('ebooks', EbookController::class)->middleware(['auth', 'verified', 'is_admin']);
 Route::resource('reels', ReelController::class)->middleware(['auth', 'verified', 'is_admin']);
+Route::resource('feeds', YoutubeController::class)->middleware(['auth', 'verified', 'is_admin']);
 
 //Import routes
 Route::get('user-import-form', [App\Http\Controllers\UserController::class, 'userFileImportForm'])->name('user.import.form')->middleware(['auth', 'verified', 'is_admin']);
 Route::post('user-import', [App\Http\Controllers\UserController::class, 'userFileImport'])->name('user.import')->middleware(['auth', 'verified', 'is_admin']);
+
+//Test
+Route::get('/debug', [TestController::class, 'debug'])->name('debug');
 
 require __DIR__.'/auth.php';

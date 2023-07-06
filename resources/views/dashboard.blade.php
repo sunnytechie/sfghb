@@ -2,6 +2,10 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row mb-2">
+        @include('analytics.index')
+    </div>
+
 <!-- Basic Bootstrap Table -->
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
@@ -19,6 +23,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F16C69">
                 <a href="{{ route('admin.users') }}">
@@ -34,6 +39,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F5B225">
                 <a href="{{ route('devotions.index') }}">
@@ -49,6 +55,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #52553c">
                 <a href="{{ route('events.index') }}">
@@ -80,6 +87,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F16C69">
                 <a href="{{ route('payment.index') }}">
@@ -95,6 +103,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #F5B225">
                 <a href="{{ route('donations.index') }}">
@@ -110,6 +119,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card mini-stat position-relative" style="background: #52553c">
                 <a href="{{ route('audio.index') }}">
@@ -173,6 +183,9 @@
                 </a>
             </div>
         </div>
+
     </div>
+
+    
 </div>
 </x-app-layout>

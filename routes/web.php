@@ -40,6 +40,7 @@ use App\Http\Controllers\YoutubeController;
 // Dashboard routes
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.home')->middleware('auth', 'verified', 'is_admin');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth', 'verified', 'is_admin');
+Route::get('/search/analytics', [DashboardController::class, 'analytics'])->name('search.analytics')->middleware('auth', 'verified', 'is_admin');
 
 //Push Notification
 Route::patch('/fcm-token', [DashboardController::class, 'updateToken'])->name('fcmToken')->middleware(['auth', 'verified', 'is_admin']);

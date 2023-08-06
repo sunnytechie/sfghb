@@ -322,6 +322,19 @@ class PaymentController extends Controller
                 ]);
     }
 
+    public function price() {
+        $basic = 500;
+        $premium = 100;
+        $silver = 1500;
+        $gold = 2000;
+
+        return response()->json([
+            'basic' => $basic,
+            'premium' => $premium,
+            'silver' => $silver,
+            'gold' => $gold,
+        ]);
+    }
 
     public function subscriptionValidity(Request $request) {
 

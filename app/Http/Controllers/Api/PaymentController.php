@@ -36,10 +36,10 @@ class PaymentController extends Controller
             'status' => "$message"
         ]);
             }
-            
+
         }
 
-        
+
     }
 
     public function store(Request $request) {
@@ -65,7 +65,7 @@ class PaymentController extends Controller
             $payment->tx_ref = $request->tx_ref;
             $payment->save();
 
-        } 
+        }
         else {
             request()->validate([
                 'name' => 'required',
@@ -76,7 +76,7 @@ class PaymentController extends Controller
                 'method' => 'required',
                 'tx_ref' => 'required',
             ]);
-    
+
             $payment = new Payment;
             $payment->name = $request->name;
             $payment->email = $request->email;
@@ -99,11 +99,11 @@ class PaymentController extends Controller
             'status' => "$message"
         ]);
             }
-            
+
         }
 
 
-        
+
     }
 
     //Storing data
@@ -123,9 +123,9 @@ class PaymentController extends Controller
             'status' => "$message"
         ]);
             }
-            
+
         }
-        
+
     }
 
 
@@ -172,7 +172,7 @@ class PaymentController extends Controller
                 'status' => 1,
             ]);
 
-        } 
+        }
         else {
             request()->validate([
                 'name' => 'required',
@@ -183,7 +183,7 @@ class PaymentController extends Controller
                 'method' => 'required',
                 'tx_ref' => 'required',
             ]);
-    
+
             $payment = new Payment;
             $payment->name = $request->name;
             $payment->email = $request->email;
@@ -253,7 +253,7 @@ class PaymentController extends Controller
                 'status' => 1,
             ]);
 
-        } 
+        }
         else {
             request()->validate([
                 'name' => 'required',
@@ -264,7 +264,7 @@ class PaymentController extends Controller
                 'method' => 'required',
                 'tx_ref' => 'required',
             ]);
-    
+
             $payment = new Payment;
             $payment->name = $request->name;
             $payment->email = $request->email;
@@ -324,44 +324,27 @@ class PaymentController extends Controller
 
 
     public function subscriptionValidity(Request $request) {
-        $header = $request->header('Authorization');
-        if (empty($header)) {
-           $message = "Invalid request or token.";
-           return response()->json([
-            'message' => "$message",
-            'status' => 0
-        ]);
-        }
 
-        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
-        $bearerToken = env('BEARER_TOKEN');
+        $payment = Payment::where('email', $request->email)->first();
 
-        if ($header !== "Bearer " . $bearerToken) {
-            $message = "Invalid request or token.";
-           return response()->json([
-            'message' => "$message",
-            'status' => 0
-        ]);
-        }
-
-        $details = Payment::where('email', $request->email)->first();
-        if ($details) {
-            $expiry_date = $details->validity;
-        
-                return response()->json([
-                    'expiry_date' => $expiry_date,
-                    'status' => 1,
-                ]);
-        }
-        else {
+        if ($payment == null) {
             return response()->json([
                 'message' => "Please subscribe to a plan.",
                 'status' => 0,
             ]);
         }
-        
-    
+
+        if ($payment->validity <= Carbon::now()) {
+            return response()->json([
+                'message' => "Please subscribe to a plan.",
+                'status' => 0,
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Subscription is still valid.",
+            'status' => 1,
+        ]);
+
     }
-
-
 }

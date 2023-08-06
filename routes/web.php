@@ -93,6 +93,24 @@ Route::resource('feeds', YoutubeController::class)->middleware(['auth', 'verifie
 Route::get('user-import-form', [App\Http\Controllers\UserController::class, 'userFileImportForm'])->name('user.import.form')->middleware(['auth', 'verified', 'is_admin']);
 Route::post('user-import', [App\Http\Controllers\UserController::class, 'userFileImport'])->name('user.import')->middleware(['auth', 'verified', 'is_admin']);
 
+//paystack-subscribe user
+Route::post('/pay', [App\Http\Controllers\CallbackController::class, 'redirectToGateway'])->name('pay');
+//Initiate
+Route::get('/initiate/basic/{id}', [App\Http\Controllers\PaystackController::class, 'intiateBasic'])->name('intiateBasic');
+Route::get('/initiate/premium/{id}', [App\Http\Controllers\PaystackController::class, 'intiatePremium'])->name('intiatePremium');
+Route::get('/initiate/silver/{id}', [App\Http\Controllers\PaystackController::class, 'intiateSilver'])->name('intiateSilver');
+Route::get('/initiate/gold/{id}', [App\Http\Controllers\PaystackController::class, 'intiateGold'])->name('intiateGold');
+//callbacks
+Route::get('/subscribe/basic/callback/{id}', [App\Http\Controllers\CallbackController::class, 'callbackSubscribeBasic'])->name('callbackSubscribeBasic');
+Route::get('/subscribe/premium/callback/{id}', [App\Http\Controllers\CallbackController::class, 'callbackSubscribePremium'])->name('callbackSubscribePremium');
+Route::get('/subscribe/silver/callback/{id}', [App\Http\Controllers\CallbackController::class, 'callbackSubscribeSilver'])->name('callbackSubscribeSilver');
+Route::get('/subscribe/gold/callback/{id}', [App\Http\Controllers\CallbackController::class, 'callbackSubscribeGold'])->name('callbackSubscribeGold');
+//return back from callback on mobile
+Route::get('/subscription/completed', [App\Http\Controllers\PaystackController::class, 'subscribeCompleted'])->name('subscribeCompleted');
+
+
+//cancel subscription
+
 //Test
 Route::get('/debug', [TestController::class, 'debug'])->name('debug');
 

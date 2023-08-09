@@ -129,7 +129,6 @@ class PaymentController extends Controller
     }
 
 
-
     public function payMonthly(Request $request, $user_id) {
         $header = $request->header('Authorization');
         if (empty($header)) {
@@ -324,7 +323,7 @@ class PaymentController extends Controller
 
     public function price() {
         $basic = 500;
-        $premium = 100;
+        $premium = 1000;
         $silver = 1500;
         $gold = 2000;
 

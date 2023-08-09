@@ -39,6 +39,9 @@ class CallbackController extends Controller
         }
         $amount = $amount / 100;
         $user = User::find($id);
+        $user->badge = "Basic";
+        $user->save();
+
         // Create a Carbon instance for your initial date
         $initialDate = Carbon::parse('2023-08-06');
         // Add a month to the initial date
@@ -92,6 +95,8 @@ class CallbackController extends Controller
 
         $amount = $amount / 100;
         $user = User::find($id);
+        $user->badge = "Premium";
+        $user->save();
         // Create a Carbon instance for your initial date
         $initialDate = Carbon::parse('2023-08-06');
         // Add 3 month to the initial date
@@ -144,6 +149,8 @@ class CallbackController extends Controller
 
         $amount = $amount / 100;
         $user = User::find($id);
+        $user->badge = "Silver";
+        $user->save();
         // Create a Carbon instance for your initial date
         $initialDate = Carbon::parse('2023-08-06');
         // Add 6 month to the initial date
@@ -196,6 +203,8 @@ class CallbackController extends Controller
 
         $amount = $amount / 100;
         $user = User::find($id);
+        $user->badge = "Gold";
+        $user->save();
         // Create a Carbon instance for your initial date
         $initialDate = Carbon::parse('2023-08-06');
         // Add 12 month to the initial date

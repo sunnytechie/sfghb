@@ -59,6 +59,7 @@ class RegisterController extends Controller
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
+                'badge' => "Free",
             ]);
 
             //Delete later
@@ -68,7 +69,7 @@ class RegisterController extends Controller
             $pin = mt_rand(1000, 9999);
             $subject = "Your SFGHB Email Verification Code.";
             Mail::to($user->email)->send(new OtpEmail($subject, $pin));
-            
+
             Otp::create([
                 'token' => $pin,
                 'email' => $user->email,
@@ -76,6 +77,7 @@ class RegisterController extends Controller
 
             //free trial for 7 days on payment
             $validity = Carbon::today()->addDays(7);
+
             $payment = new Payment;
             $payment->name = $user->name;
             $payment->email = $user->email;
@@ -86,7 +88,7 @@ class RegisterController extends Controller
             $payment->method = "Free Trial";
             $payment->tx_ref = "Free Trial";
             $payment->save();
-            
+
             //success message for user to verify their email
             $success = "Thanks for signing up! Before getting started, verify your email address by clicking on the link we just sent to your email.";
             $status = 1;

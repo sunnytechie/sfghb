@@ -108,6 +108,7 @@ Route::get('/subscribe/gold/callback/{id}', [App\Http\Controllers\CallbackContro
 //return back from callback on mobile
 Route::get('/subscription/completed', [App\Http\Controllers\PaystackController::class, 'subscribeCompleted'])->name('subscribeCompleted');
 
+//contact
 
 //cancel subscription
 

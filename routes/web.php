@@ -109,8 +109,7 @@ Route::get('/subscribe/gold/callback/{id}', [App\Http\Controllers\CallbackContro
 Route::get('/subscription/completed', [App\Http\Controllers\PaystackController::class, 'subscribeCompleted'])->name('subscribeCompleted');
 
 //contact
-
-//cancel subscription
+Route::get('/contact', [App\Http\Controllers\PageController::class, 'contact'])->name('page.contact');
 
 //Test
 Route::get('/debug', [TestController::class, 'debug'])->name('debug');

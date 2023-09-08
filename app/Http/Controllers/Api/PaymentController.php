@@ -335,6 +335,32 @@ class PaymentController extends Controller
         ]);
     }
 
+    public function applePlan() {
+        //make a loop of data/array with title, price
+        $applePlan = [
+            [
+                'title' => 'Basic',
+                'price' => 500,
+            ],
+            [
+                'title' => 'Premium',
+                'price' => 1000,
+            ],
+            [
+                'title' => 'Silver',
+                'price' => 1500,
+            ],
+            [
+                'title' => 'Gold',
+                'price' => 2000,
+            ],
+        ];
+
+        return response()->json([
+            'applePlan' => $applePlan,
+        ]);
+    }
+
     public function subscriptionValidity(Request $request) {
 
         $payment = Payment::where('email', $request->email)->first();

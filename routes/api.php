@@ -83,6 +83,7 @@ Route::get('/user/price-info', [App\Http\Controllers\Api\PaymentController::clas
 //checkExpiryDate
 Route::post('/user/subscription/expiry-date', [App\Http\Controllers\Api\PaymentController::class, 'subscriptionValidity']);
 Route::get('/user/subscription/price', [App\Http\Controllers\Api\PaymentController::class, 'price']);
+Route::get('/apple/subscription/plan', [App\Http\Controllers\Api\PaymentController::class, 'applePlan']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

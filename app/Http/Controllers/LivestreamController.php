@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Livestream;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class LivestreamController extends Controller
 {
@@ -94,10 +95,23 @@ class LivestreamController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = 'livestream' . '_' . time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/livestream');
-            $image->move($destinationPath, $name);
+            //$image = $request->file('image');
+            //$name = 'livestream' . '_' . time() . '.' . $image->getClientOriginalExtension();
+            //$destinationPath = public_path('/images/livestream');
+            //$image->move($destinationPath, $name);
+            $imagePath = request('image')->store('livestream', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"));
+
+            // Adjust the dimensions for mobile devices
+            $maxWidth = 600; // Set the desired maximum width for mobile
+            $maxHeight = 800; // Set the desired maximum height for mobile
+
+            // Resize the image while preserving the aspect ratio
+            $image->resize($maxWidth, $maxHeight, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $image->save();
         }
 
         $live = Livestream::find($id);
@@ -109,7 +123,7 @@ class LivestreamController extends Controller
         $live->visibility = $request->visibility;
         $live->minister = $request->minister;
         if ($request->hasFile('image')) {
-            $live->image = $name;
+            $live->image = $imagePath;
         }
         $live->live = $request->live;
         $live->save();

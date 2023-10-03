@@ -84,7 +84,7 @@
 
             <div class="mb-3">
                 <label class="form-label" for="basic-default-image">Thumbnail</label>
-                <input type="file" class="dropify form-control @error('image') is-invalid @enderror" id="basic-default-image" data-default-file="/images/livestream/{{ $live->image ?? old('image') }}" id="image" name="image" />
+                <input type="file" class="dropify form-control @error('image') is-invalid @enderror" id="basic-default-image" data-default-file="/storage/{{ $live->image ?? old('image') }}" id="image" name="image" />
 
                 @error('image')
                     <span class="invalid-feedback" role="alert">

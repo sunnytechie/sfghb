@@ -17,5 +17,7 @@ class Livestream extends Model
         'location',
         'visibility',
         'minister',
+        'image',
+        'live',
     ];
 }

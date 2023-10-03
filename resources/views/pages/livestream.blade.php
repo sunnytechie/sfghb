@@ -1,8 +1,8 @@
 <x-app-layout>
     <!-- Content -->
-    
+
     <div class="container-xxl flex-grow-1 container-p-y">
-    
+
         <!-- New devotion -->
         <div class="row">
           <div class="col-md-8 offset-md-2">
@@ -19,7 +19,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="basic-default-title">Title</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" value="{{ old('title') ?? $title }}" id="title" name="title" placeholder="Title here..." />
-                    
+
                     @error('title')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="basic-default-url">Video link</label>
                     <input type="url" class="form-control @error('url') is-invalid @enderror" id="basic-default-url" value="{{ old('url') ?? $url }}" id="url" name="url" placeholder="https://www......." />
-                    
+
                     @error('url')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
             <div class="mb-3">
               <label class="form-label" for="basic-default-body">Description</label>
               <input type="text" class="form-control @error('body') is-invalid @enderror" id="basic-default-body" value="{{ old('body') ?? $body }}" id="body" name="body" placeholder="describe the event..." />
-              
+
               @error('body')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
             <div class="mb-3">
                 <label class="form-label" for="basic-default-tags">Hashtags (seperated with a comma)</label>
                 <input type="text" class="form-control @error('tags') is-invalid @enderror" id="basic-default-tags" value="{{ old('tags') ?? $tags }}" id="tags" name="tags" placeholder="#sfi #loveinaction #ydf #jesuswives" />
-                
+
                 @error('tags')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -63,7 +63,7 @@
             <div class="mb-3">
                 <label class="form-label" for="basic-default-location">Event location</label>
                 <input type="text" class="form-control @error('location') is-invalid @enderror" id="basic-default-location" value="{{ old('location') ?? $location }}" id="location" name="location" placeholder="Jesus Transformation camp..." />
-                
+
                 @error('location')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -74,12 +74,23 @@
             <div class="mb-3">
                 <label class="form-label" for="basic-default-minister">Minister</label>
                 <input type="text" class="form-control @error('minister') is-invalid @enderror" id="basic-default-minister" value="{{ old('minister') ?? $minister }}" id="minister" name="minister" placeholder="Rev. Mrs. Nche Iredu" />
-                
+
                 @error('minister')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                   @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="basic-default-image">Thumbnail</label>
+                <input type="file" class="dropify form-control @error('image') is-invalid @enderror" id="basic-default-image" data-default-file="/images/livestream/{{ $live->image ?? old('image') }}" id="image" name="image" />
+
+                @error('image')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -95,7 +106,23 @@
                 </span>
               @enderror
             </div>
-    
+
+            {{-- Checkbox if you want event to be live --}}
+            <div class="mb-3">
+                <label>Live</label>
+                <select class="form-control @error('live') is-invalid @enderror" name="live" id="live">
+                    <option value="1" {{ $live->live == 1 ? 'selected' : '' }}>Yes</option>
+                    <option value="0" {{ $live->live == 0 ? 'selected' : '' }}>No</option>
+                </select>
+
+                @error('live')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+
                   <button type="submit" class="btn btn-primary rounded-0">Publish</button>
                 </form>
               </div>

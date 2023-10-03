@@ -111,6 +111,9 @@ Route::get('/subscription/completed', [App\Http\Controllers\PaystackController::
 //contact
 Route::get('/contact', [App\Http\Controllers\PageController::class, 'contact'])->name('page.contact');
 
+//webversion
+Route::get('/webversion', [App\Http\Controllers\WebVersionController::class, 'index'])->name('index.webversion');
+
 //Test
 Route::get('/debug', [TestController::class, 'debug'])->name('debug');
 

@@ -67,6 +67,7 @@ class LivestreamController extends Controller
         $location = $live->location;
         $visibility = $live->visibility;
         $minister = $live->minister;
+
         return view('pages.livestream', compact('live', 'id', 'url', 'title', 'body', 'tags', 'location', 'visibility', 'minister'));
     }
 
@@ -88,7 +89,16 @@ class LivestreamController extends Controller
             'location' => 'required',
             'visibility' => '',
             'minister' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'live' => 'required',
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = 'livestream' . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/livestream');
+            $image->move($destinationPath, $name);
+        }
 
         $live = Livestream::find($id);
         $live->title = $request->title;
@@ -98,6 +108,10 @@ class LivestreamController extends Controller
         $live->location = $request->location;
         $live->visibility = $request->visibility;
         $live->minister = $request->minister;
+        if ($request->hasFile('image')) {
+            $live->image = $name;
+        }
+        $live->live = $request->live;
         $live->save();
 
         return redirect()->back()->with('message', 'Live stream video link has been updated successfully and notification sent.');

@@ -164,6 +164,7 @@ class PaymentController extends Controller
             //Update user subscribe logic
             $user = User::find($user_id);
             $user->subscribe = 1;
+            $user->badge = "Basic";
             $user->save();
 
             return response()->json([
@@ -198,6 +199,172 @@ class PaymentController extends Controller
             //Update user subscribe logic
             $user = User::find($user_id);
             $user->subscribe = 1;
+            $user->badge = "Basic";
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        }
+
+
+    }
+
+    public function payQuarterly(Request $request, $user_id) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
+        if ($checkEmailExist) {
+            $payment = Payment::where('email', $request->email)->first();
+            $payment->validity = Carbon::today()->addDays(90);
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->badge = "Premium";
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        }
+        else {
+            request()->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'currency' => 'required',
+                'amount' => 'required',
+                'country' => '',
+                'method' => 'required',
+                'tx_ref' => 'required',
+            ]);
+
+            $payment = new Payment;
+            $payment->name = $request->name;
+            $payment->email = $request->email;
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->validity = Carbon::today()->addDays(90);;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        }
+
+
+    }
+
+    public function payBianually(Request $request, $user_id) {
+        $header = $request->header('Authorization');
+        if (empty($header)) {
+           $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+        $bearerToken = env('BEARER_TOKEN');
+
+        if ($header !== "Bearer " . $bearerToken) {
+            $message = "Invalid request or token.";
+           return response()->json([
+            'message' => "$message",
+            'status' => 0
+        ]);
+        }
+
+        $checkEmailExist = Payment::select('email')->where('email', $request->email)->first();
+        if ($checkEmailExist) {
+            $payment = Payment::where('email', $request->email)->first();
+            //add 6 months to the validity
+            $payment->validity = Carbon::today()->addDays(182);
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->badge = "Silver";
+            $user->save();
+
+            return response()->json([
+                'message' => "Successful",
+                'status' => 1,
+            ]);
+
+        }
+        else {
+            request()->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'currency' => 'required',
+                'amount' => 'required',
+                'country' => '',
+                'method' => 'required',
+                'tx_ref' => 'required',
+            ]);
+
+            $payment = new Payment;
+            $payment->name = $request->name;
+            $payment->email = $request->email;
+            $payment->currency = $request->currency;
+            $payment->amount = $request->amount;
+            $payment->country = $request->country;
+            $payment->validity = Carbon::today()->addDays(182);;
+            $payment->method = $request->method;
+            $payment->tx_ref = $request->tx_ref;
+            $payment->save();
+
+            //Update user subscribe logic
+            $user = User::find($user_id);
+            $user->subscribe = 1;
+            $user->badge = "Silver";
             $user->save();
 
             return response()->json([
@@ -245,6 +412,7 @@ class PaymentController extends Controller
             //Update user subscribe logic
             $user = User::find($user_id);
             $user->subscribe = 1;
+            $user->badge = "Gold";
             $user->save();
 
             return response()->json([
@@ -279,6 +447,7 @@ class PaymentController extends Controller
             //Update user subscribe logic
             $user = User::find($user_id);
             $user->subscribe = 1;
+            $user->badge = "Gold";
             $user->save();
 
             return response()->json([

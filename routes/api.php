@@ -77,6 +77,8 @@ Route::get('/youtube/feeds', [App\Http\Controllers\Api\YoutubeController::class,
 
 //Subscribe Monthly and Yearly on sfghb
 Route::post('/user/subscribe-monthly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payMonthly']);
+Route::post('/user/subscribe-quarterly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payQuarterly']);
+Route::post('/user/subscribe-biannually/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payBianually']);
 Route::post('/user/subscribe-yearly/{id}', [App\Http\Controllers\Api\PaymentController::class, 'payYearly']);
 Route::get('/user/price-info', [App\Http\Controllers\Api\PaymentController::class, 'priceInfo']);
 

@@ -87,6 +87,9 @@ Route::post('/user/subscription/expiry-date', [App\Http\Controllers\Api\PaymentC
 Route::get('/user/subscription/price', [App\Http\Controllers\Api\PaymentController::class, 'price']);
 Route::get('/apple/subscription/plan', [App\Http\Controllers\Api\PaymentController::class, 'applePlan']);
 
+//delete account
+Route::post('/delete/user/{user_id}', [App\Http\Controllers\Api\AccountDeleteController::class, 'deleteAccount']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

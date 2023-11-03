@@ -14,7 +14,7 @@
             <button type="submit" class="btn btn-sm btn-primary">Publish selected</button>
           </div>
         </div>
-        
+
         <div class="table-responsive text-nowrap">
           <table id="myTable" class="table table-striped table-bordered table-hover table-sm" style="width:100%">
             <thead>
@@ -46,7 +46,7 @@
                           PUBLISHED
                       @else
                           UNPUBLISHED
-                      @endif  
+                      @endif
                   </span>
                 </td>
                   <td>
@@ -59,9 +59,9 @@
                         </form>
                       </div>
                   </td>
-                </tr> 
+                </tr>
               @endforeach
-                
+
             </tbody>
           </table>
         </div>
@@ -73,7 +73,7 @@
       </div>
       <!--/ Basic Bootstrap Table -->
 
-      
+
 
 
       <!--/ Responsive Table -->

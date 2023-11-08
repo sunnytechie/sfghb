@@ -10,7 +10,7 @@
 
           <div class="card-body">
             <div class="row justify-content-start align-items-center g-2">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">About Us</h5>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Contact Us</h5>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Recommended</h5>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Privacy Policy</h5>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Terms and Condition</h5>
@@ -69,11 +69,11 @@
                 </div>
              </div>
           </div>
-          
+
         </div>
         <!--/ Basic Bootstrap Table -->
 
-        
+
 
 
         <!--/ Responsive Table -->

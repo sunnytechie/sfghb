@@ -64,7 +64,7 @@
         <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
     <body>
-        
+
         <div class="container">
             <div class="row" style="min-height: 70vh">
                 <div class="col-md-12">
@@ -72,9 +72,13 @@
                         <div class="text-center">
                             <img src="{{ asset('assets/img/red-ghb1.png') }}" alt="">
                         </div>
-                        
-                        <p class="card-text">{!! $privacy_policy !!}</p>
-                        
+
+                        {!! $info->privacy_policy !!}
+
+                        <div id="terms" class="mt-5">
+                            {!! $info->terms !!}
+                        </div>
+
                     </div>
                 </div>
             </div>

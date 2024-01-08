@@ -22,11 +22,19 @@ class DevotionController extends Controller
     public function thisWeek() {
         $startOfWeek = Carbon::now()->startOfWeek(Carbon::SUNDAY);
         $endOfWeek = Carbon::now()->endOfWeek(Carbon::SATURDAY);
-        
+
         $thisWeekdevotions = Devotion::where('read_date', '>=', $startOfWeek)
                             ->where('read_date', '<=', $endOfWeek)
                             ->where('published', 1)
                             ->get();
+
+                            // if thisWeekdevotions is null fetch the last 7 days
+                            if($thisWeekdevotions->isEmpty()) {
+                                $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(7))
+                                ->where('read_date', '<=', Carbon::now())
+                                ->where('published', 1)
+                                ->get();
+                            }
 
         return response()->json([
             'devotion' => $thisWeekdevotions,
@@ -36,7 +44,7 @@ class DevotionController extends Controller
     public function paginateDevotionWeekly(Request $request) {
         $startOfWeek = Carbon::now()->startOfWeek(Carbon::SUNDAY);
         $endOfWeek = Carbon::now()->endOfWeek(Carbon::SATURDAY);
-        
+
         $thisWeekdevotions = Devotion::where('read_date', '>=', $startOfWeek)
                             ->where('read_date', '<=', $endOfWeek)
                             ->where('published', 1)
@@ -66,7 +74,7 @@ class DevotionController extends Controller
         $october = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 10)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
         $november = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 11)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
         $december = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 12)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        
+
         return response()->json([
             'january' => $january,
             'february' => $february,
@@ -87,6 +95,10 @@ class DevotionController extends Controller
     public function show() {
         $today = Carbon::now();
         $devotion = Devotion::whereDate('read_date', $today)->first();
+        //if devotion is null fetch the last devotion
+        if($devotion == null) {
+            $devotion = Devotion::orderBy('read_date', 'desc')->first();
+        }
 
         return response()->json([
             'devotionToday' => $devotion,

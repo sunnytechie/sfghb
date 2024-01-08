@@ -30,8 +30,7 @@ class DevotionController extends Controller
 
                             // if thisWeekdevotions is empty, fetch the last 7 days
         if ($thisWeekdevotions->isEmpty()) {
-            dd('empty');
-            $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(7))
+            $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(30))
                 ->where('read_date', '<=', Carbon::now())
                 ->where('published', 1)
                 ->get();
@@ -50,6 +49,14 @@ class DevotionController extends Controller
                             ->where('read_date', '<=', $endOfWeek)
                             ->where('published', 1)
                             ->paginate($request->pageSize ?? 7);
+
+                            // if thisWeekdevotions is empty, fetch the last 7 days
+        if ($thisWeekdevotions->isEmpty()) {
+            $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(30))
+                ->where('read_date', '<=', Carbon::now())
+                ->where('published', 1)
+                ->paginate($request->pageSize ?? 7);
+        }
 
         return response()->json([
             'weeklyDevotion' => $thisWeekdevotions,

@@ -29,7 +29,7 @@ class DevotionController extends Controller
                             ->get();
 
                             // if thisWeekdevotions is null fetch the last 7 days
-                            if($thisWeekdevotions->isEmpty()) {
+                            if(!$thisWeekdevotions) {
                                 $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(7))
                                 ->where('read_date', '<=', Carbon::now())
                                 ->where('published', 1)

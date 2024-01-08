@@ -28,13 +28,13 @@ class DevotionController extends Controller
                             ->where('published', 1)
                             ->get();
 
-                            // if thisWeekdevotions is null fetch the last 7 days
-                            if(!$thisWeekdevotions) {
-                                $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(7))
-                                ->where('read_date', '<=', Carbon::now())
-                                ->where('published', 1)
-                                ->get();
-                            }
+                            // if thisWeekdevotions is empty, fetch the last 7 days
+        if ($thisWeekdevotions->isEmpty()) {
+            $thisWeekdevotions = Devotion::where('read_date', '>=', Carbon::now()->subDays(7))
+                ->where('read_date', '<=', Carbon::now())
+                ->where('published', 1)
+                ->get();
+        }
 
         return response()->json([
             'devotion' => $thisWeekdevotions,

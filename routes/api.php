@@ -90,6 +90,9 @@ Route::get('/apple/subscription/plan', [App\Http\Controllers\Api\PaymentControll
 //delete account
 Route::post('/delete/user/{user_id}', [App\Http\Controllers\Api\AccountDeleteController::class, 'deleteAccount']);
 
+//banner
+Route::get('/devotional/banner', [App\Http\Controllers\Api\BannerController::class, 'index']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

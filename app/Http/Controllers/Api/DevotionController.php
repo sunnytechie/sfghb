@@ -69,19 +69,20 @@ class DevotionController extends Controller
         //$devotions = Devotion::orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->get();
 
         //In 2023
-        $year2023 = 2023;
-        $january = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 1)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        $february = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 2)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 29);
-        $march = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 3)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        $april = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 4)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
-        $may = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 5)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        $june = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 6)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
-        $july = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 7)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        $august = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 8)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        $september = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 9)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
-        $october = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 10)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
-        $november = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 11)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
-        $december = Devotion::whereYear('read_date', $year2023)->whereMonth('read_date', 12)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $currentYear = Carbon::now()->year;
+        //dd($currentYear);
+        $january = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 1)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $february = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 2)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 29);
+        $march = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 3)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $april = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 4)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
+        $may = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 5)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $june = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 6)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
+        $july = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 7)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $august = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 8)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $september = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 9)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
+        $october = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 10)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
+        $november = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 11)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 30);
+        $december = Devotion::whereYear('read_date', $currentYear)->whereMonth('read_date', 12)->orderByRaw("YEAR(read_date) ASC, MONTH(read_date) ASC")->paginate($request->pageSize ?? 31);
 
         return response()->json([
             'january' => $january,

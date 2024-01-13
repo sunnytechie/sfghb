@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\InfoController;
@@ -65,6 +66,9 @@ Route::get('/info/recommend', [InfoController::class, 'recommended'])->name('inf
 Route::get('/info/privacy-policy', [InfoController::class, 'privacyPolicy'])->name('info.policy')->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/info/terms-condition', [InfoController::class, 'termsCondition'])->name('info.terms')->middleware(['auth', 'verified', 'is_admin']);
 Route::get('/admin-users', [UserController::class, 'adminUser'])->name('admin.users')->middleware(['auth', 'verified', 'is_admin']);
+//banner
+Route::get('/banner', [BannerController::class, 'show'])->name('show.banner')->middleware(['auth', 'verified', 'is_admin']);
+Route::put('/banner/update/{id}', [BannerController::class, 'update'])->name('update.banner')->middleware(['auth', 'verified', 'is_admin']);
 
 //urls for privacy policy and terms and conditions
 Route::get('/privacy-policy', [InfoController::class, 'privacyPolicyPage'])->name('privacy.policy');

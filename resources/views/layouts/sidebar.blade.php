@@ -17,7 +17,7 @@
     <ul class="menu-inner py-1 pb-5">
       <span style="padding: 10px 30px; font-size: 11px; font-weight:200">MAIN</span>
       <!-- Dashboard -->
-      <li class="menu-item 
+      <li class="menu-item
       @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
             active
           @endif">
@@ -27,8 +27,8 @@
         </a>
       </li>
 
-      <!-- Devotions -->      
-      <li class="menu-item 
+      <!-- Devotions -->
+      <li class="menu-item
       @if (request()->routeIs('devotions.index') || request()->routeIs('devotions.create') || request()->routeIs('devotions.edit'))
       active
       @endif">
@@ -38,7 +38,7 @@
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item 
+          <li class="menu-item
           @if(request()->routeIs('devotions.index'))
             active
           @endif">
@@ -52,6 +52,11 @@
           @endif">
             <a href="{{ route('devotions.create') }}" class="menu-link">
               <div data-i18n="Without navbar">Add New</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('show.banner') }}" class="menu-link">
+              <div data-i18n="Container">Update Banner</div>
             </a>
           </li>
           <li class="menu-item">
@@ -72,8 +77,8 @@
         </ul>
       </li>
 
-      <!-- events -->      
-      <li class="menu-item 
+      <!-- events -->
+      <li class="menu-item
       @if (request()->routeIs('events.index') || request()->routeIs('events.create') || request()->routeIs('events.edit'))
       active
       @endif">
@@ -83,7 +88,7 @@
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item 
+          <li class="menu-item
           @if(request()->routeIs('events.index'))
             active
           @endif">
@@ -117,8 +122,8 @@
         </ul>
       </li>
 
-      <!-- news -->      
-      <li class="menu-item 
+      <!-- news -->
+      <li class="menu-item
         @if (request()->routeIs('news.index') || request()->routeIs('news.create') || request()->routeIs('news.edit'))
         active
         @endif">
@@ -128,7 +133,7 @@
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item 
+          <li class="menu-item
           @if(request()->routeIs('news.index'))
             active
           @endif">
@@ -162,8 +167,8 @@
         </ul>
       </li>
 
-      {{-- Ebooks --}}   
-      <li class="menu-item 
+      {{-- Ebooks --}}
+      <li class="menu-item
         @if (request()->routeIs('ebooks.index') || request()->routeIs('ebooks.create') || request()->routeIs('ebooks.edit'))
         active
         @endif">
@@ -173,7 +178,7 @@
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item 
+          <li class="menu-item
           @if(request()->routeIs('ebooks.index'))
             active
           @endif">
@@ -207,8 +212,8 @@
         </ul>
       </li>
 
-      {{-- Reels --}}   
-      <li class="menu-item 
+      {{-- Reels --}}
+      <li class="menu-item
         @if (request()->routeIs('reels.index') || request()->routeIs('reels.create') || request()->routeIs('reels.edit'))
         active
         @endif">
@@ -218,7 +223,7 @@
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item 
+          <li class="menu-item
           @if(request()->routeIs('reels.index'))
             active
           @endif">
@@ -252,8 +257,8 @@
         </ul>
       </li>
 
-      {{-- Youtube videos --}}   
-      <li class="menu-item 
+      {{-- Youtube videos --}}
+      <li class="menu-item
         @if (request()->routeIs('feeds.index') || request()->routeIs('reels.create') || request()->routeIs('reels.edit'))
         active
         @endif">
@@ -263,7 +268,7 @@
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item 
+          <li class="menu-item
           @if(request()->routeIs('feeds.index'))
             active
           @endif">
@@ -297,7 +302,7 @@
         </ul>
       </li>
 
-      <li class="menu-item 
+      <li class="menu-item
           @if(request()->routeIs('healths.index') || request()->routeIs('healths.create') || request()->routeIs('healths.edit'))
               active
             @endif
@@ -308,8 +313,8 @@
           </a>
         </li>
 
-        <!-- Audio -->      
-        <li class="menu-item 
+        <!-- Audio -->
+        <li class="menu-item
         @if (request()->routeIs('audioseries.index') || request()->routeIs('audioseries.create') || request()->routeIs('audioseries.edit') || request()->routeIs('audio.index') || request()->routeIs('audio.edit') || request()->routeIs('audio.create'))
         active
         @endif">
@@ -319,7 +324,7 @@
           </a>
 
           <ul class="menu-sub">
-            <li class="menu-item 
+            <li class="menu-item
             @if(request()->routeIs('audioseries.index'))
               active
             @endif">
@@ -339,8 +344,8 @@
           </ul>
         </li>
 
-            <!-- Users -->      
-            <li class="menu-item 
+            <!-- Users -->
+            <li class="menu-item
             @if (request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') || request()->routeIs('admin.users'))
             active
             @endif">
@@ -348,7 +353,7 @@
                 <i class='bx bxs-user-detail'></i>
                 <div data-i18n="Layouts">Participants</div>
               </a>
-      
+
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="{{ route('users.index') }}" class="menu-link">
@@ -364,9 +369,9 @@
             </li>
 
 
-            
 
-            <li class="menu-item 
+
+            <li class="menu-item
                 @if(request()->routeIs('push.notication.index') || request()->routeIs('push.notication.create'))
                       active
                 @endif">
@@ -376,7 +381,7 @@
               </a>
             </li>
 
-            <li class="menu-item 
+            <li class="menu-item
              @if(request()->routeIs('feedback.index'))
                   active
                 @endif
@@ -387,9 +392,9 @@
               </a>
             </li>
 
-            
 
-            <li class="menu-item 
+
+            <li class="menu-item
             @if (request()->routeIs('payment.index') || request()->routeIs('purchases.index') || request()->routeIs('donations.index'))
             active
             @endif">
@@ -399,7 +404,7 @@
               </a>
 
               <ul class="menu-sub">
-                <li class="menu-item 
+                <li class="menu-item
                 @if(request()->routeIs('payment.index'))
                   active
                 @endif">
@@ -407,7 +412,7 @@
                     <div data-i18n="Without menu">Devotional Payments</div>
                   </a>
                 </li>
-                <li class="menu-item 
+                <li class="menu-item
                 @if(request()->routeIs('purchases.index'))
                   active
                 @endif">
@@ -427,7 +432,7 @@
               </ul>
             </li>
 
-            <li class="menu-item 
+            <li class="menu-item
             @if(request()->routeIs('chapters.index') || request()->routeIs('chapters.edit'))
                   active
                 @endif
@@ -439,7 +444,7 @@
             </li>
 
 
-            {{-- <li class="menu-item 
+            {{-- <li class="menu-item
             @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
                 @endif
@@ -450,7 +455,7 @@
               </a>
             </li>
 
-            <li class="menu-item 
+            <li class="menu-item
             @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
                 @endif
@@ -461,7 +466,7 @@
               </a>
             </li> --}}
 
-            {{-- <li class="menu-item 
+            {{-- <li class="menu-item
             @if(request()->routeIs('dashboard') || request()->routeIs('dashboard.home'))
                   active
                 @endif
@@ -472,12 +477,12 @@
               </a>
             </li> --}}
 
-            
-     
 
-      
-      <!-- pages -->      
-      <li class="menu-item 
+
+
+
+      <!-- pages -->
+      <li class="menu-item
       @if (request()->routeIs('faq.index') || request()->routeIs('info.index') || request()->routeIs('info.about') || request()->routeIs('info.contact') || request()->routeIs('info.policy') || request()->routeIs('info.recommend') || request()->routeIs('info.terms') || request()->routeIs('faq.create') || request()->routeIs('faq.edit') || request()->routeIs('page.others') || request()->routeIs('livestream.edit') || request()->routeIs('page.chapter') || request()->routeIs('social.index'))
       active
       @endif">
@@ -521,7 +526,7 @@
         </ul>
       </li>
 
-      <li class="menu-item 
+      <li class="menu-item
             @if(request()->routeIs('paykeys.index'))
               active
             @endif

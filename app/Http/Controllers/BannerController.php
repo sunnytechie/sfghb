@@ -45,9 +45,10 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $banner = Banner::first();
+        return view('devotions.banner.edit', compact('banner'));
     }
 
     /**
@@ -58,7 +59,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner = Banner::find($id);
+        return view('devotions.banner.edit', compact('banner'));
     }
 
     /**
@@ -84,8 +86,8 @@ class BannerController extends Controller
         $banner->image = $request->image;
         $banner->save();
 
-           //redirect
-           return redirect()->back()->with('success', 'Banner updated successfully.');
+        //redirect
+        return redirect()->back()->with('message', 'Banner updated successfully.');
     }
 
     /**

@@ -10,7 +10,7 @@ class DonationController extends Controller
 {
     public function index()
     {
-        $donations = DB::table('monfo_donations')->get();
+        $donations = DB::table('monfo_donations')->where('status', 'success')->get();
         return view('monfo.donation', compact('donations'));
     }
 }

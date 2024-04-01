@@ -118,6 +118,15 @@ Route::get('/contact', [App\Http\Controllers\PageController::class, 'contact'])-
 //webversion
 Route::get('/webversion', [App\Http\Controllers\WebVersionController::class, 'index'])->name('index.webversion');
 
+
+//new routes use prefix
+Route::prefix('monfo')->middleware(['auth', 'verified', 'is_admin'])->group(function () {
+    //trainees
+    Route::get('/trainees', [App\Http\Controllers\Monfo\TrainingRegController::class, 'index'])->name('monfo.trainees');
+    //donations
+    Route::get('/donations', [App\Http\Controllers\Monfo\DonationController::class, 'index'])->name('monfo.donations');
+});
+
 //Test
 Route::get('/debug', [TestController::class, 'debug'])->name('debug');
 

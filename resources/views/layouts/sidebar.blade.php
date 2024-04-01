@@ -27,6 +27,33 @@
         </a>
       </li>
 
+        {{-- Monfo --}}
+        <li class="menu-item
+            @if (request()->routeIs('monfo.donations') || request()->routeIs('monfo.trainees') )
+            active
+            @endif">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class='bx bxs-heart' ></i>
+            <div data-i18n="Layouts">Monfo</div>
+            </a>
+
+            <ul class="menu-sub">
+
+            <li class="menu-item">
+                <a href="{{ route('monfo.donations') }}" class="menu-link">
+                <div data-i18n="Container">Donations</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="{{ route('monfo.trainees') }}" class="menu-link">
+                <div data-i18n="Container">Trainees</div>
+                </a>
+            </li>
+
+            </ul>
+        </li>
+
       <!-- Devotions -->
       <li class="menu-item
       @if (request()->routeIs('devotions.index') || request()->routeIs('devotions.create') || request()->routeIs('devotions.edit'))
@@ -536,6 +563,8 @@
             <div data-i18n="Analytics">Payment keys</div>
           </a>
         </li>
-    </ul>
+
+        </ul>
   </aside>
+
   <!-- / Menu -->
